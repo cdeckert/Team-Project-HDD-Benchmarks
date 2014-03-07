@@ -1,0 +1,15 @@
+14:54:09 **** Build of configuration Debug for project HDD-Tests-1 ****
+make all 
+Building file: ../src/HDD-Tests-1.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HDD-Tests-1.d" -MT"src/HDD-Tests-1.d" -o "src/HDD-Tests-1.o" "../src/HDD-Tests-1.cpp"
+Finished building: ../src/HDD-Tests-1.cpp
+ 
+Building target: HDD-Tests-1
+Invoking: GCC C++ Linker
+g++  -o "HDD-Tests-1"  ./src/HDD-Tests-1.o   
+Finished building target: HDD-Tests-1
+ 
+14:54:14 **** Incremental Build of configuration Debug for project HDD-Tests-1 ****
+make all 
+make: Nothing to be done for `all'.
