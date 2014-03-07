@@ -1,0 +1,25 @@
+/*
+ * RealTimeClock.h
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+
+#ifndef REALTIMECLOCK_H_
+#define REALTIMECLOCK_H_
+
+
+
+class RealTimeClock
+{
+public:
+	static double getRealTime();
+	static void start();
+	static double stop();
+private:
+	static std:list<double> roundTime;
+	static double startTime;
+
+}
+
+#endif /* REALTIMECLOCK_H_ */

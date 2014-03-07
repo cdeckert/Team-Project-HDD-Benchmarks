@@ -1,15 +1,27 @@
-14:54:09 **** Build of configuration Debug for project HDD-Tests-1 ****
+16:59:26 **** Incremental Build of configuration Debug for project HDD-Tests-1 ****
 make all 
-Building file: ../src/HDD-Tests-1.cpp
+Building file: ../src/Stopwatch.cpp
 Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HDD-Tests-1.d" -MT"src/HDD-Tests-1.d" -o "src/HDD-Tests-1.o" "../src/HDD-Tests-1.cpp"
-Finished building: ../src/HDD-Tests-1.cpp
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Stopwatch.d" -MT"src/Stopwatch.d" -o "src/Stopwatch.o" "../src/Stopwatch.cpp"
+../src/Stopwatch.cpp: In member function ‘void Stopwatch::lap()’:
+../src/Stopwatch.cpp:112:16: warning: NULL used in arithmetic [-Wpointer-arith]
+  if(startTime==NULL) start();
+                ^
+../src/Stopwatch.cpp: In member function ‘double Stopwatch::getLapTime(int)’:
+../src/Stopwatch.cpp:119:28: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  if(lap < lapTimeList.size())
+                            ^
+../src/Stopwatch.cpp: In member function ‘double Stopwatch::getTotalTime()’:
+../src/Stopwatch.cpp:132:38: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for(int i=0; i < (lapTimeList.size()); i++)
+                                      ^
+Finished building: ../src/Stopwatch.cpp
  
 Building target: HDD-Tests-1
 Invoking: GCC C++ Linker
-g++  -o "HDD-Tests-1"  ./src/HDD-Tests-1.o   
+g++  -o "HDD-Tests-1"  ./src/HDD-Tests-1.o ./src/Stopwatch.o   
 Finished building target: HDD-Tests-1
  
-14:54:14 **** Incremental Build of configuration Debug for project HDD-Tests-1 ****
+16:59:27 **** Incremental Build of configuration Debug for project HDD-Tests-1 ****
 make all 
 make: Nothing to be done for `all'.

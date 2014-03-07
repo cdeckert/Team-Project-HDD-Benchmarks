@@ -1,0 +1,21 @@
+//============================================================================
+// Name        : HDD-Tests-1.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+
+
+#include <iostream>
+#include <RealTimeClock.h>
+
+int main() {
+
+
+	double startcputime, endcputime, wcts, wcte;
+	startcputime = RealTimeClock::getRealTime();
+
+	return 0;
+}

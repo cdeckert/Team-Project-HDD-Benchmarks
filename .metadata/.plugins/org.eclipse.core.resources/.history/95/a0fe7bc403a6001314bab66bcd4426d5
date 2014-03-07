@@ -1,0 +1,18 @@
+/*
+ * RealTimeClock.cpp
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+
+#include "RealTimeClock.h"
+
+RealTimeClock::RealTimeClock() {
+	// TODO Auto-generated constructor stub
+
+}
+
+RealTimeClock::~RealTimeClock() {
+	// TODO Auto-generated destructor stub
+}
+

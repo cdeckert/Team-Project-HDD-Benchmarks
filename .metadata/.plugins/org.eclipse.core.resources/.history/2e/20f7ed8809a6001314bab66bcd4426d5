@@ -1,0 +1,23 @@
+/*
+ * Timer.h
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+
+#ifndef TIMER_H_
+#define TIMER_H_
+
+class Timer {
+public:
+	Timer();
+	virtual ~Timer();
+	static double getTime();
+	void start();
+	void end();
+	void newRound();
+private:
+	std:list<double>roundTimeList;
+};
+
+#endif /* TIMER_H_ */

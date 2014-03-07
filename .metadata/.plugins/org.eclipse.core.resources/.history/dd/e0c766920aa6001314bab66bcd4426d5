@@ -1,0 +1,20 @@
+/*
+ * Stopwatch.cpp
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+
+#include "Stopwatch.h"
+
+
+Stopwatch::Stopwatch() {
+	lapTimeList.begin();
+}
+
+
+
+Stopwatch::~Stopwatch() {
+	// TODO Auto-generated destructor stub
+}
+

@@ -1,0 +1,29 @@
+/*
+ * Stopwatch.h
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+
+#ifndef STOPWATCH_H_
+#define STOPWATCH_H_
+
+namespace std {
+
+class Stopwatch {
+public:
+	Stopwatch();
+	virtual ~Stopwatch();
+
+	void start();
+	void lap();
+	void stop();
+	double getLapTime(int lap);
+	double getTotalTime();
+private:
+	std::list<double>lapTimeList;
+};
+
+} /* namespace std */
+
+#endif /* STOPWATCH_H_ */
