@@ -22,6 +22,7 @@ void Skippy::execute(int iteration)
     
     lseek64(getFd(), (getSingleSector() * iteration), SEEK_CUR);
     write(getFd(), &buffer, 1024);
+    perror("write");
 
         
 }

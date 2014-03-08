@@ -12,7 +12,7 @@
 
 Benchmark::Benchmark(char *theAddress) {
     SINGLE_SECTOR = 512;
-    fd = open64(theAddress, O_RDWR, O_DIRECT, O_LARGEFILE);
+    fd = open64(theAddress, O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
     perror("open");
 }
 
