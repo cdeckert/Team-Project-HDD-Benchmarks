@@ -15,6 +15,7 @@
 #include <time.h>	/* clock_gettime(), time() */
 #include <sys/time.h>	/* gethrtime(), gettimeofday() */
 #include <iostream>
+#include <math.h>
 
 
 #if defined(__MACH__) && defined(__APPLE__)
@@ -110,7 +111,12 @@ void Stopwatch::stop()
 {
     for(int i=0; i < (lapTimeList.size()); i++)
     {
-        std::cout << i << ":" << getLapTime(i)*1000 << "\n";
+        std::string output ="";
+        for(int i = 0; i< getLapTime(i)*1000; i++)
+        {
+            output = output + "X";
+        }
+        std::cout << output << "\n";
     }
 }
 
