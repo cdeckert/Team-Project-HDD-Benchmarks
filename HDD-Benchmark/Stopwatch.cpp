@@ -115,9 +115,9 @@ void Stopwatch::stop()
         double time = getLapTime(i)*5000;
         for(int i = 0; i< time; i++)
         {
-            output += "X";
+            output += "=";
         }
-        std::cout << output << "\n";
+        std::cout << output << "o\n";
     }
 }
 
