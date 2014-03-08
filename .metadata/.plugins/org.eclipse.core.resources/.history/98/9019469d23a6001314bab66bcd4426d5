@@ -1,0 +1,17 @@
+/*
+ * Benchmark.cpp
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+
+#include "Benchmark.h"
+
+
+Benchmark::Benchmark() {
+}
+
+
+Benchmark::~Benchmark() {
+}
+

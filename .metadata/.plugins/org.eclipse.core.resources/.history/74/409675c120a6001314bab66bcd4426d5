@@ -1,0 +1,23 @@
+/*
+ * IBenchmark.h
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+
+#ifndef IBENCHMARK_H_
+#define IBENCHMARK_H_
+
+
+using namespace std;
+
+class IBenchmark
+{
+	public:
+		virtual void execute(int) = 0;
+
+};
+
+
+
+#endif /* IBENCHMARK_H_ */

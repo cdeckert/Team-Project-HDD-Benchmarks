@@ -1,0 +1,42 @@
+/*
+ * Skippy.cpp
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+#define _LARGEFILE64_SOURCE
+
+#include <unistd.h>
+#include <sys/types.h>
+
+
+
+/*include <string>
+
+#include <stdio.h>
+#include <sys/stat.h>
+#include <unistd.h>
+*/
+
+#include "Skippy.h"
+
+
+using namespace std;
+
+Skippy::Skippy(char *theAddress)
+{
+	fd = open64(theAddress, O_RDWR|O_DIRECT|O_LARGEFILE);
+
+}
+
+void Skippy::execute(int iteration)
+{
+	lseek64(fd, 512, SEEK_CUR);
+}
+
+
+
+Skippy::~Skippy() {
+	// TODO Auto-generated destructor stub
+}
+

@@ -1,0 +1,23 @@
+/*
+ * Skippy.h
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+
+#ifndef SKIPPY_H_
+#define SKIPPY_H_
+#include <string>
+
+
+class Skippy : public IBenchmark{
+public:
+	Skippy();
+	virtual void execute(int iteration);
+	virtual ~Skippy();
+private:
+	string theAddress;
+};
+
+
+#endif /* SKIPPY_H_ */

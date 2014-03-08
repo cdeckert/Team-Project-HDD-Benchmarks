@@ -1,0 +1,25 @@
+/*
+ * Benchmark.h
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+
+#ifndef BENCHMARK_H_
+#define BENCHMARK_H_
+
+#include <fcntl.h>
+
+namespace std {
+
+class Benchmark {
+public:
+	Benchmark();
+	virtual void execute(int);
+	virtual ~Benchmark();
+	int fd =0;
+};
+
+} /* namespace std */
+
+#endif /* BENCHMARK_H_ */

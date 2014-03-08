@@ -1,0 +1,22 @@
+/*
+ * Benchmark.cpp
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+
+#include "Benchmark.h"
+
+namespace std {
+
+Benchmark::Benchmark() {
+	// TODO Auto-generated constructor stub
+	fd = -1;
+}
+
+
+Benchmark::~Benchmark() {
+	// TODO Auto-generated destructor stub
+}
+
+} /* namespace std */

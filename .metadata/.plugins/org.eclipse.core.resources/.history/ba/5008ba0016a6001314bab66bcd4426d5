@@ -1,0 +1,21 @@
+/*
+ * Skippy.h
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+
+#ifndef SKIPPY_H_
+#define SKIPPY_H_
+
+namespace std {
+
+class Skippy {
+public:
+	Skippy();
+	virtual ~Skippy();
+};
+
+} /* namespace std */
+
+#endif /* SKIPPY_H_ */

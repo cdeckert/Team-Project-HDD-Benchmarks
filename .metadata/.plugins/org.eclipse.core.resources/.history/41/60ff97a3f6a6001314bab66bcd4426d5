@@ -1,0 +1,22 @@
+#include "Skippy.h"
+
+
+Skippy::Skippy(char *theAddress)
+{
+	fd = open64(theAddress, O_RDWR|O_DIRECT|O_LARGEFILE);
+
+}
+
+#include <unistd.h>
+void Skippy::execute(int iteration)
+{
+	lseek64(fd, 512, SEEK_CUR);
+	write(fd, &buffer, sizeof(buffer));
+}
+
+
+
+Skippy::~Skippy() {
+	// TODO Auto-generated destructor stub
+}
+

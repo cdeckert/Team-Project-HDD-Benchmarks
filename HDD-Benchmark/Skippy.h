@@ -1,0 +1,26 @@
+/* 
+ * File:   Skippy.h
+ * Author: christiandeckert
+ *
+ * Created on March 8, 2014, 8:35 PM
+ */
+
+#ifndef SKIPPY_H
+#define	SKIPPY_H
+
+#include "Benchmark.h"
+
+class Skippy : public Benchmark {
+public:
+    Skippy(char*);
+    void execute(int);
+    virtual ~Skippy();
+
+    int fd;
+    char buffer[1024];
+private:
+
+};
+
+#endif	/* SKIPPY_H */
+

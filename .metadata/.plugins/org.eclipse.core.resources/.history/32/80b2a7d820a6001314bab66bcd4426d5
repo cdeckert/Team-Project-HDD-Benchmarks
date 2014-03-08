@@ -1,0 +1,21 @@
+/*
+ * Benchmark.h
+ *
+ *  Created on: Mar 7, 2014
+ *      Author: christiandeckert
+ */
+
+#ifndef BENCHMARK_H_
+#define BENCHMARK_H_
+
+namespace std {
+
+class Benchmark {
+public:
+	Benchmark();
+	virtual ~Benchmark();
+};
+
+} /* namespace std */
+
+#endif /* BENCHMARK_H_ */
