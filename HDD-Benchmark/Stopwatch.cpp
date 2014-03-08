@@ -112,12 +112,12 @@ void Stopwatch::stop()
     for(int i=0; i < (lapTimeList.size()); i++)
     {
         std::string output ="";
-        double time = getLapTime(i)*1000;
+        double time = getLapTime(i)*5000;
         for(int i = 0; i< time; i++)
         {
             output += "X";
         }
-        std::cout << output <<"\t\t" << getLapTime(i)*1000 << "\n";
+        std::cout << output << "\n";
     }
 }
 
