@@ -15,7 +15,7 @@ public:
     Skippy(char*);
     void execute(int);
     virtual ~Skippy();
-    char buffer[1024000000];
+    char buffer[1024000];
     int fd;
     
 private:
