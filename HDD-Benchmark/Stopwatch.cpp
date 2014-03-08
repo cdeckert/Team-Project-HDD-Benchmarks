@@ -110,7 +110,7 @@ void Stopwatch::stop()
 {
     for(int i=0; i < (lapTimeList.size()); i++)
     {
-        std::cout << i << ":" << getLapTime(i)*1000 << "\n";
+        std::cout << i << ":" << getLapTime(i)*100000 << "\n";
     }
 }
 
