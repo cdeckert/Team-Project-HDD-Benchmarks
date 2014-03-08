@@ -17,7 +17,7 @@ public:
     virtual ~Skippy();
 
     int fd;
-    char buffer[1024];
+    
 private:
 
 };

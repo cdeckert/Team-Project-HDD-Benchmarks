@@ -9,19 +9,21 @@
 
 #include <stdio.h>
 
-Skippy::Skippy(char *theAddress): Benchmark(theAddress){}
+Skippy::Skippy(char *theAddress): Benchmark(theAddress){
+    
+}
 
 
 
 void Skippy::execute(int iteration)
 {
+    char buffer[1024];
+	
+    
+    lseek64(getFd(), (getSingleSector() * iteration), SEEK_CUR);
+    write(getFd(), &buffer, 1024);
+
         
-	lseek64(getFd(), (SINGLE_SECTOR * iteration), SEEK_CUR);
-        //perror("Seek");
-        std::cout << sizeof(buffer) << "\n";
-        write(fd, &buffer, sizeof(buffer));
-        
-        //perror("Write");
 }
 
 

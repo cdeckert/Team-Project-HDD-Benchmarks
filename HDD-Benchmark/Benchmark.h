@@ -32,11 +32,13 @@ class Benchmark {
 public:
     Benchmark(char*);
     virtual void execute(int) = 0;
-    int SINGLE_SECTOR;
+    
     int getFd();
+    int getSingleSector();
     virtual ~Benchmark();
 private:
     int fd;
+    int SINGLE_SECTOR;
 };
 
 #endif	/* BENCHMARK_H */

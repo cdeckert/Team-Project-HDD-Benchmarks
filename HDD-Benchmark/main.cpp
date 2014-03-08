@@ -17,17 +17,17 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
-    Stopwatch* stopwatch = new Stopwatch();
+    Stopwatch stopwatch = Stopwatch();
     
-    Skippy* skippy = new Skippy("/dev/sdb");
+    Skippy skippy = Skippy("/dev/sdb");
     
-    stopwatch->start();
+    stopwatch.start();
     for(int i=0; i<50000; i++)
     {
-        skippy->execute(i);
-        stopwatch->lap();
+        skippy.execute(i);
+        stopwatch.lap();
     }
-    stopwatch->stop();
+    stopwatch.stop();
     
     return 0;
 }
