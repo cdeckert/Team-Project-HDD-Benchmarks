@@ -116,7 +116,7 @@ void Stopwatch::stop()
         {
             output = output + "X";
         }
-        std::cout << output << "\n";
+        std::cout << output << getLapTime(i)*1000 << "\n";
     }
 }
 
