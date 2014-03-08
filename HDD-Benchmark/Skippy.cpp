@@ -17,11 +17,11 @@ Skippy::Skippy(char *theAddress): Benchmark(theAddress){
 
 void Skippy::execute(int iteration)
 {
-    char buffer[1024];
+    //
 	
     
     lseek64(getFd(), (getSingleSector() * iteration), SEEK_CUR);
-    write(getFd(), &buffer, 1024);
+    write(getFd(), &buffer,  sizeof(buffer));
     //perror("write");
 
         
