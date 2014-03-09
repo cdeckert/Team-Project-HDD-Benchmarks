@@ -118,14 +118,11 @@ void Stopwatch::stop()
         
         csv.open("results.csv");
         
-        double time = getLapTime(i)*5000;
-        for(int i = 0; i< time; i++)
+        for(int i = 0; i< lapTimeList.size(); i++)
         {
-            output += "=";
             csv << i << ", " << getLapTime(i)*1000 << "\n";
         }
         csv.close();
-        std::cout << output << "o\n";
     }
 }
 
