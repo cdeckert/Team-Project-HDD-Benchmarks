@@ -16,6 +16,7 @@
 #include <sys/time.h>	/* gethrtime(), gettimeofday() */
 #include <iostream>
 #include <math.h>
+#include <fstream>
 
 
 #if defined(__MACH__) && defined(__APPLE__)
@@ -112,11 +113,18 @@ void Stopwatch::stop()
     for(int i=0; i < (lapTimeList.size()); i++)
     {
         std::string output ="";
+        
+        std::ofstream csv;
+        
+        csv.open("results.csv");
+        
         double time = getLapTime(i)*5000;
         for(int i = 0; i< time; i++)
         {
             output += "=";
+            csv << i << ", " << getLapTime(i)*1000 << "\n";
         }
+        csv.close();
         std::cout << output << "o\n";
     }
 }
@@ -143,6 +151,7 @@ double Stopwatch::getLapTime(int lap)
 double Stopwatch::getTotalTime()
 {
 	double sum = 0;
+        
 	for(int i=0; i < (lapTimeList.size()); i++)
 	{
 		sum+= getLapTime(i);
