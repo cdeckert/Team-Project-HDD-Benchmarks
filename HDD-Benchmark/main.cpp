@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
     Skippy skippy = Skippy("/dev/sdb");
     
     stopwatch.start();
-    int iterations = 100000;
+    int iterations = 5000;
     for(int i=0; i<iterations; i++)
     {
         

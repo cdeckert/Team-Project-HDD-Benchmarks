@@ -111,16 +111,20 @@ void Stopwatch::start()
 void Stopwatch::stop()
 {
     std::ofstream csv;
+    std::ofstream jsonp;
     printf("\n\n");
     csv.open("results.csv");
+    jsonp.open("results.jsonp");
+    jsonp << "data = [";
     for(int i=0; i < (lapTimeList.size()); i++)
     {
-        
-        
+        jsonp << getLapTime(i) << ", ";
         csv << i << ", " << getLapTime(i)*1000 << "\n";
         printf("\rLines %10d                       \r", i);
     }
     csv.close();
+    jsonp << getLapTime(lapTimeList.size()-1)*1000 << "];";
+    jsonp.close();
 }
 
 void Stopwatch::lap()
