@@ -11,7 +11,7 @@
 #include <iostream>
 
 Skippy::Skippy(char *theAddress): Benchmark(theAddress){
-    
+    lseek64(getFd(), 0, SEEK_SET);
 }
 
 

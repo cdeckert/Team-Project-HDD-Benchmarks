@@ -23,11 +23,11 @@ int main(int argc, char** argv) {
     Skippy skippy = Skippy("/dev/sdb");
     
     stopwatch.start();
-    int iterations = 1000000;
+    int iterations = 100000;
     for(int i=0; i<iterations; i++)
     {
         
-        printf("\rTest Status: %2.0f %                      \r", round(i*100/iterations));
+        printf("\rTest Status: %2.2f %                      \r", round(i/(iterations/100)));
      
         skippy.execute(i);
         stopwatch.lap();
