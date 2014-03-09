@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
     for(int i=0; i<iterations; i++)
     {
         
-        printf("\rStatus: %2.3f %                      \r", round(i*100000/iterations)/1000);
+        printf("\rStatus: %2.0f %                      \r", round(i*100/iterations));
      
         skippy.execute(i);
         stopwatch.lap();
