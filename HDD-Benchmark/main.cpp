@@ -9,6 +9,7 @@
 #include <cstdlib>
 #include "Stopwatch.h"
 #include "Skippy.h"
+#include <cmath>
 
 using namespace std;
 
@@ -22,8 +23,10 @@ int main(int argc, char** argv) {
     Skippy skippy = Skippy("/dev/sdb");
     
     stopwatch.start();
-    for(int i=0; i<50000; i++)
+    int iterations = 50000;
+    for(int i=0; i<iterations; i++)
     {
+        std::cout << "\b\b\b\b\b\b" << round(i*100/iterations)/100 << "%";
         skippy.execute(i);
         stopwatch.lap();
     }
