@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
     int iterations = 50000;
     for(int i=0; i<iterations; i++)
     {
-        std::cout << "\b\b\b\b\b\b" << round(i*100/iterations)/100 << "%";
+        std::cout << "\b\b\b\b\b\b" << round(i*100/iterations) << "%";
         skippy.execute(i);
         stopwatch.lap();
     }
