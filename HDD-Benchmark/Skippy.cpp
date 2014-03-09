@@ -8,6 +8,7 @@
 #include "Skippy.h"
 
 #include <stdio.h>
+#include <iostream>
 
 Skippy::Skippy(char *theAddress): Benchmark(theAddress){
     
