@@ -117,10 +117,11 @@ void Stopwatch::stop()
         std::ofstream csv;
         
         csv.open("results.csv");
-        
+        printf("\n\n");
         for(int i = 0; i< lapTimeList.size(); i++)
         {
             csv << i << ", " << getLapTime(i)*1000 << "\n";
+            printf("\rCSV Status: %2.0f %                      \r", round(i*100/lapTimeList.size()));
         }
         csv.close();
     }
