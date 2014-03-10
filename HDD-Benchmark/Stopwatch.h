@@ -6,7 +6,7 @@
 
 class Stopwatch {
 public:
-	Stopwatch();
+	Stopwatch(int);
 	virtual ~Stopwatch();
 
 	void start();
