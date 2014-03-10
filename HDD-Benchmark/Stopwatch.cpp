@@ -99,7 +99,8 @@ static double getTime()
 	#endif
 }
 
-Stopwatch::Stopwatch() {
+Stopwatch::Stopwatch(int iterations) {
+	lapTimeList.reserve(iterations);
     startTime = -1;
 }
 
