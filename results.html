@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="HDD-Benchmark/results.jsonp"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+
+
+</head>
+<body>
+	<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	<script type="text/javascript">
+		 $('#container').highcharts({
+		 	chart: {
+                zoomType: 'x'
+                   },
+		 	series:[
+		 		{
+		 			name: "skippy",
+		 			data: data
+		 		}
+		 	]
+		 });
+	</script>
+</body>
+</html>
