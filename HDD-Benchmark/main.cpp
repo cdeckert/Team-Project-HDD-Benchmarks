@@ -7,9 +7,7 @@
 
 
 #include <cstdlib>
-#include "Stopwatch.h"
 #include "Skippy.h"
-#include <cmath>
 
 using namespace std;
 
@@ -19,20 +17,9 @@ using namespace std;
 int main(int argc, char** argv) {
 
     int iterations = 1000;
-    Stopwatch stopwatch = Stopwatch(iterations);
     
     Benchmark::Skippy skippy = Benchmark::Skippy("/dev/sdb");
-    
-    stopwatch.start();
-    for(int i=0; i<iterations; i++)
-    {
-        
-        printf("\rTest Status: %2.2f %                      \r", round(i/(iterations/100)));
-     
-        skippy.execute(i);
-        stopwatch.lap();
-    }
-    stopwatch.stop();
+    skippy.configure(iterations);
     
     return 0;
 }

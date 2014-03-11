@@ -9,22 +9,12 @@
 
 namespace Benchmark {
 
-
-Benchmark::Benchmark(char *theAddress) {
-    SINGLE_SECTOR = 512;
-    fd = open64(theAddress, O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
-    perror("open");
+Benchmark::Benchmark(char*) {
 }
 
-int Benchmark::getFd()
-{
-    return fd;
+void Benchmark::execute() {
 }
 
-int Benchmark::getSingleSector()
-{
-    return SINGLE_SECTOR;
-}
 
 Benchmark::~Benchmark() {
 }

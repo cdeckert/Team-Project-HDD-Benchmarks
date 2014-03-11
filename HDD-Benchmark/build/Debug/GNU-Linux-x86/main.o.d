@@ -1,7 +1,4 @@
-build/Debug/GNU-Linux-x86/main.o: main.cpp Stopwatch.h Skippy.h \
- Benchmark.h
-
-Stopwatch.h:
+build/Debug/GNU-Linux-x86/main.o: main.cpp Skippy.h Benchmark.h
 
 Skippy.h:
 

@@ -33,14 +33,9 @@ namespace Benchmark {
 class Benchmark {
 public:
     Benchmark(char*);
-    virtual void execute(int) = 0;
-    
-    int getFd();
-    int getSingleSector();
+    virtual void execute() = 0;
     virtual ~Benchmark();
 private:
-    int fd;
-    int SINGLE_SECTOR;
 };
 
 }
