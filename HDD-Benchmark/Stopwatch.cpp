@@ -83,9 +83,9 @@ static double getTime()
 	#else
 			const clockid_t id = (clockid_t)-1;	/* Unknown. */
 	#endif /* CLOCK_* */
-			if ( id != (clockid_t)-1 && clock_gettime( id, &ts ) != -1 )
-				return (double)ts.tv_sec +
-					(double)ts.tv_nsec / 1000000000.0;
+		//	if ( id != (clockid_t)-1 && clock_gettime( id, &ts ) != -1 )
+		//		return (double)ts.tv_sec +
+		//			(double)ts.tv_nsec / 1000000000.0;
 			/* Fall thru. */
 		}
 	#endif /* _POSIX_TIMERS */

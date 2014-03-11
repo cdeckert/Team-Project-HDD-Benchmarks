@@ -18,8 +18,8 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
-    int iterations = 10000;
-    Stopwatch stopwatch = Stopwatch(iteration);
+    int iterations = 1000;
+    Stopwatch stopwatch = Stopwatch(iterations);
     
     Skippy skippy = Skippy("/dev/sdb");
     
