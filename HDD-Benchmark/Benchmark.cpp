@@ -7,7 +7,7 @@
 
 #include "Benchmark.h"
 
-
+namespace Benchmark {
 
 
 Benchmark::Benchmark(char *theAddress) {
@@ -29,3 +29,4 @@ int Benchmark::getSingleSector()
 Benchmark::~Benchmark() {
 }
 
+}

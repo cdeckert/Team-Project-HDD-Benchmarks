@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <iostream>
 
+namespace Benchmark {
+
 Skippy::Skippy(char *theAddress): Benchmark(theAddress){
     lseek64(getFd(), 0, SEEK_SET);
 }
@@ -24,5 +26,7 @@ void Skippy::execute(int iteration)
 
 
 Skippy::~Skippy() {
+}
+
 }
 

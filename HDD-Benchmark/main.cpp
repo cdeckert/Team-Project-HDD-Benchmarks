@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
     int iterations = 1000;
     Stopwatch stopwatch = Stopwatch(iterations);
     
-    Skippy skippy = Skippy("/dev/sdb");
+    Benchmark::Skippy skippy = Benchmark::Skippy("/dev/sdb");
     
     stopwatch.start();
     for(int i=0; i<iterations; i++)

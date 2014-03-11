@@ -28,6 +28,8 @@
 #include <stdio.h>
 #include <ctime>*/
 
+namespace Benchmark {
+
 class Benchmark {
 public:
     Benchmark(char*);
@@ -40,6 +42,8 @@ private:
     int fd;
     int SINGLE_SECTOR;
 };
+
+}
 
 #endif	/* BENCHMARK_H */
 

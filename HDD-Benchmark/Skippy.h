@@ -10,6 +10,8 @@
 
 #include "Benchmark.h"
 
+namespace Benchmark {
+
 class Skippy : public Benchmark {
 public:
     Skippy(char*);
@@ -21,6 +23,6 @@ public:
 private:
 
 };
-
+}
 #endif	/* SKIPPY_H */
 
