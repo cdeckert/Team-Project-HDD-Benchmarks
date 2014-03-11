@@ -20,6 +20,7 @@ int main(int argc, char** argv) {
     std::string device = "/dev/sdb";
     Benchmark::Skippy skippy = Benchmark::Skippy(device);
     skippy.configure(iterations);
+    skippy.execute();
     
     return 0;
 }
