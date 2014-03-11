@@ -9,7 +9,7 @@
 
 namespace Benchmark {
 
-Benchmark::Benchmark(char*) {
+Benchmark::Benchmark(std::string) {
 }
 
 void Benchmark::execute() {

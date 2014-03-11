@@ -17,8 +17,8 @@ using namespace std;
 int main(int argc, char** argv) {
 
     int iterations = 1000;
-    
-    Benchmark::Skippy skippy = Benchmark::Skippy("/dev/sdb");
+    std::string device = "/dev/sdb";
+    Benchmark::Skippy skippy = Benchmark::Skippy(device);
     skippy.configure(iterations);
     
     return 0;

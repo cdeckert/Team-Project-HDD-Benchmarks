@@ -14,9 +14,9 @@
 
 namespace Benchmark {
 
-Skippy::Skippy(char *theAddress): Benchmark(theAddress){
+Skippy::Skippy(std::string theAddress): Benchmark(theAddress){
 	SINGLE_SECTOR = 512;
-	fd = open64(theAddress, O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
+	fd = open64(theAddress.data(), O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
 	perror("open");
 
     lseek64(getFd(), 0, SEEK_SET);
@@ -41,7 +41,7 @@ void Skippy::execute() {
     for(int i=0; i<iterations; i++)
     {
 
-        printf("\rTest Status: %2.2f %                      \r", round(i/(iterations/100)));
+        printf("\rTest Status: %2.2f %%                      \r", round(i/(iterations/100)));
 
         this->runIteration(i);
         stopwatch.lap();

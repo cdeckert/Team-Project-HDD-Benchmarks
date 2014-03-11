@@ -14,7 +14,7 @@ namespace Benchmark {
 
 class Skippy : public Benchmark {
 public:
-    Skippy(char*);
+    Skippy(std::string);
     void configure(int);
     void runIteration(int);
     void execute();

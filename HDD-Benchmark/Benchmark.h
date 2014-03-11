@@ -32,7 +32,7 @@ namespace Benchmark {
 
 class Benchmark {
 public:
-    Benchmark(char*);
+    Benchmark(std::string);
     virtual void execute() = 0;
     virtual ~Benchmark();
 private:
