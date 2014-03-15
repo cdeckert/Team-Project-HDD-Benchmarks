@@ -28,7 +28,7 @@ void Skippy::configure(int iterations) {
 
 
 
-void Skippy::runIteration(int iteration)
+inline void Skippy::runIteration(int iteration)
 {
     lseek64(getFd(), (getSingleSector() * iteration), SEEK_CUR);
     write(getFd(), &buffer,  sizeof(buffer));
@@ -49,12 +49,12 @@ void Skippy::execute() {
     stopwatch.stop();
 }
 
-int Skippy::getSingleSector()
+inline int Skippy::getSingleSector()
 {
     return SINGLE_SECTOR;
 }
 
-int Skippy::getFd()
+inline int Skippy::getFd()
 {
     return fd;
 }
