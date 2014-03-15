@@ -41,7 +41,7 @@ void Skippy::execute() {
     for(int i=0; i<iterations; i++)
     {
 
-        printf("\rTest Status: %2.2f %%                      \r", round(i/(iterations/100)));
+        printf("\rSkippy Test Status: %2.2f %%                      \r", round(i/(iterations/100)));
 
         this->runIteration(i);
         stopwatch.lap();
