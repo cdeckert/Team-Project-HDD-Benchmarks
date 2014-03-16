@@ -37,7 +37,7 @@ namespace Benchmark
 			{
 				//perror("read");
 				lap++;
-				std::cout << "\r LAP:" << lap << ":"<< iterations << ":" << round(lap*10000/iterations)/1000;
+				std::cout << "\r LAP:" << lap << ":"<< iterations << ":" << round(lap*100/iterations);
 				stopwatch.lap();
 				transfer = 0;
 			}
