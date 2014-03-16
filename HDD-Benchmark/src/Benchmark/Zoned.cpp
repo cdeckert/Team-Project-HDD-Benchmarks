@@ -25,6 +25,8 @@ namespace Benchmark
 	void Zoned::execute()
 	{
 		int iterations = round(this->diskSize / this->reportSize);
+
+		printf("iterations: %d", iterations);
 		Stopwatch stopwatch = Stopwatch(iterations);
 		int transfer = 0;
 		int lap = 0;
