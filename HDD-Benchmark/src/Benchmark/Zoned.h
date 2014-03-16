@@ -15,7 +15,7 @@ namespace Benchmark
 			virtual ~Zoned();
 		private:
 			int fd;
-			int diskSize;
+			off64_t diskSize;
 			int largeSize;
 			int reportSize;
 			char * buffer;

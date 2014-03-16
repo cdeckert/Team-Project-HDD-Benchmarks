@@ -9,7 +9,6 @@ namespace Benchmark
 	{
 		this->fd = open64(theAddress.data(), O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
 		perror("open");
-		printf("FD %d",fd);
 		measureSize();
 	}
 
@@ -24,13 +23,13 @@ namespace Benchmark
 
 	void Zoned::execute()
 	{
-		int iterations = round(this->diskSize / this->reportSize);
+		int iterations = round(diskSize / reportSize);
 
 		printf("iterations: %d", iterations);
 		Stopwatch stopwatch = Stopwatch(iterations);
 		int transfer = 0;
 		int lap = 0;
-		while(read(fd, buffer, largeSize) == largeSize && lap < 100000)
+		while(read(fd, buffer, largeSize) == largeSize)
 		{
 
 			transfer += largeSize;
@@ -48,7 +47,9 @@ namespace Benchmark
 
 	void Zoned::measureSize()
 	{
+		lseek64(fd, 0L, SEEK_SET);
 		this->diskSize = lseek64(fd, 0L, SEEK_END);
+		std::cout << diskSize << "DISK\n";
 		lseek64(fd, 0L, SEEK_SET);
 	}
 
