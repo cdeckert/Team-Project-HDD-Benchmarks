@@ -102,6 +102,7 @@ static double getTime()
 Stopwatch::Stopwatch(int iterations) {
 	lapTimeList.reserve(iterations);
     startTime = -1;
+    perror("Stopwatch");
 }
 
 void Stopwatch::start()
