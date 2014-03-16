@@ -28,7 +28,7 @@ namespace Benchmark
 		Stopwatch stopwatch = Stopwatch(iterations);
 		int transfer = 0;
 		int lap = 0;
-		while(read(fd, buffer, largeSize) == largeSize && lap < 10000)
+		while(read(fd, buffer, largeSize) == largeSize && lap < 100000)
 		{
 
 			transfer += largeSize;
