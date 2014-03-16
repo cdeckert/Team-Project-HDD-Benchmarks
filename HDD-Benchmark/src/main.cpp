@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     int bufferSize = 1024;
     std::string device = "/dev/sdb";
     Benchmark::Zoned zoned = Benchmark::Zoned(device);
-    zoned.configure(bufferSize, 10240, 10240*1000);
+    zoned.configure(bufferSize, 10240, 102400*1000);
     zoned.execute();
 
     /*Benchmark::Skippy skippy = Benchmark::Skippy(device);
