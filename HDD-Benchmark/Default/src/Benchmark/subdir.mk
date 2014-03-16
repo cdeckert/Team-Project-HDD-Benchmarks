@@ -5,15 +5,18 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/Benchmark/Benchmark.cpp \
-../src/Benchmark/Skippy.cpp 
+../src/Benchmark/Skippy.cpp \
+../src/Benchmark/Zoned.cpp 
 
 OBJS += \
 ./src/Benchmark/Benchmark.o \
-./src/Benchmark/Skippy.o 
+./src/Benchmark/Skippy.o \
+./src/Benchmark/Zoned.o 
 
 CPP_DEPS += \
 ./src/Benchmark/Benchmark.d \
-./src/Benchmark/Skippy.d 
+./src/Benchmark/Skippy.d \
+./src/Benchmark/Zoned.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

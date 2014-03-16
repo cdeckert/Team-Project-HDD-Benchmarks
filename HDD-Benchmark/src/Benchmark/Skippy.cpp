@@ -14,9 +14,8 @@ Skippy::Skippy(std::string theAddress): Benchmark(theAddress)
 	perror("open");
 	printf("FD %d",fd);
 	perror("abc");
-    int seek = lseek64(fd, 0L, SEEK_SET);
-    printf("FDDD: %d",seek);
-    perror("seek1");
+    lseek64(fd, 0L, SEEK_SET);
+    perror("seek to start");
 }
 
 void Skippy::configure(int iterations, int singleSector, int bufferSize)
