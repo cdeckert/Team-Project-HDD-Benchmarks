@@ -1,10 +1,3 @@
-/* 
- * File:   Skippy.cpp
- * Author: christiandeckert
- * 
- * Created on March 8, 2014, 8:35 PM
- */
-
 #include "Skippy.h"
 #include "Stopwatch.h"
 
@@ -12,29 +5,40 @@
 #include <iostream>
 #include <cmath>
 
-namespace Benchmark {
+namespace Benchmark
+{
 
-Skippy::Skippy(std::string theAddress): Benchmark(theAddress){
-	SINGLE_SECTOR = 512;
-	fd = open64(theAddress.data(), O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
+Skippy::Skippy(std::string theAddress): Benchmark(theAddress)
+{
+	this->fd = open64(theAddress.data(), O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
 	perror("open");
-
-    lseek64(getFd(), 0, SEEK_SET);
+	printf("FD %d",fd);
+	perror("abc");
+    int seek = lseek64(fd, 0L, SEEK_SET);
+    printf("FDDD: %d",seek);
+    perror("seek1");
 }
 
-void Skippy::configure(int iterations) {
+void Skippy::configure(int iterations, int singleSector, int bufferSize)
+{
 	this->iterations = iterations;
+	this->singleSector = singleSector;
+	perror("single");
+	char* b = new char[bufferSize];
+	this->buffer = b;
+	perror("buffer");
 }
 
 
 
 inline void Skippy::runIteration(int iteration)
 {
-    lseek64(getFd(), (getSingleSector() * iteration), SEEK_CUR);
-    write(getFd(), &buffer,  sizeof(buffer));
+    lseek64(fd, (singleSector * iteration), SEEK_CUR);
+    write(fd, &buffer,  sizeof(buffer));
 }
 
-void Skippy::execute() {
+void Skippy::execute()
+{
     Stopwatch stopwatch = Stopwatch(this->iterations);
 
     stopwatch.start();
@@ -49,15 +53,6 @@ void Skippy::execute() {
     stopwatch.stop();
 }
 
-inline int Skippy::getSingleSector()
-{
-    return SINGLE_SECTOR;
-}
-
-inline int Skippy::getFd()
-{
-    return fd;
-}
 
 
 Skippy::~Skippy() {

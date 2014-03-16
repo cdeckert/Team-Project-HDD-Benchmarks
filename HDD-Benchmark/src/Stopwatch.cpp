@@ -124,7 +124,7 @@ void Stopwatch::stop()
         printf("\rLines %10d                       \r", i);
     }
     csv.close();
-    jsonp << getLapTime(lapTimeList.size()-1)*1000 << "];";
+    jsonp << getLapTime(lapTimeList.size()-1) << "];";
     jsonp.close();
 }
 

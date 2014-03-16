@@ -17,16 +17,7 @@
 #include <string>
 #include <stdio.h>
 #include <iostream>
-/*
-#include <cstdlib>
-#include <iostream>
-#include <unistd.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <ctime>
-#include <stdio.h>
-#include <ctime>*/
+
 
 namespace Benchmark {
 

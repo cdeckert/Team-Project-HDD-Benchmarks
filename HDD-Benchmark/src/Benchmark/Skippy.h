@@ -15,19 +15,18 @@ namespace Benchmark {
 class Skippy : public Benchmark {
 public:
     Skippy(std::string);
-    void configure(int);
+    void configure(int, int, int);
     void runIteration(int);
     void execute();
     virtual ~Skippy();
-    char buffer[1024];
-    
-    int getFd();
-    int getSingleSector();
+
 
 private:
     int iterations;
     int fd;
-    int SINGLE_SECTOR;
+    int singleSector;
+    char * buffer;
+
 };
 }
 #endif	/* SKIPPY_H */
