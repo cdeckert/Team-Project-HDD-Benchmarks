@@ -2,6 +2,7 @@
 #define	SKIPPY_H
 
 #include "Benchmark.h"
+#include "ResultSaver.h"
 
 namespace Benchmark
 {

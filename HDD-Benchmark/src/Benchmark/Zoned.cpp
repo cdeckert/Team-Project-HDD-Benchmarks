@@ -24,6 +24,8 @@ namespace Benchmark
 
 	void Zoned::execute()
 	{
+
+		cout << "################" << endl << "#### ZONED #####" << endl << "################" << endl;
 		this->iterations = round(diskSize / reportSize);
 
 		printf("iterations: %d", iterations);

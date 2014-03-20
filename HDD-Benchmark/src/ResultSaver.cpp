@@ -22,7 +22,7 @@ void ResultSaver::save(Stopwatch stopwatch) {
     printf("\n\n");
 
     std::stringstream filename;
-    filename << "result" << drive << "_" << testName << "-" << iterations;
+    filename << "results/"<< "result" << drive << "_" << testName << "-" << iterations;
     std::stringstream filenamecsv;
     filenamecsv << filename << ".csv";
     std::stringstream filenamejsonp;

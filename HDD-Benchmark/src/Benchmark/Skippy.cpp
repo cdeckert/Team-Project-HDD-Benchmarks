@@ -38,6 +38,7 @@ inline void Skippy::runIteration(int iteration)
 
 void Skippy::execute()
 {
+	cout << "################" << endl << "#### SKIPPY ####" << endl << "################" << endl;
     Stopwatch stopwatch = Stopwatch(this->iterations);
 
     stopwatch.start();
@@ -50,6 +51,8 @@ void Skippy::execute()
         stopwatch.lap();
     }
     stopwatch.stop();
+    HDDTest::ResultSaver resultSaver(this->device, "zoned", iterations);
+	resultSaver.save(stopwatch);
 }
 
 
