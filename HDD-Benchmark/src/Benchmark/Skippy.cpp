@@ -38,7 +38,7 @@ inline void Skippy::runIteration(int iteration)
 
 void Skippy::execute()
 {
-	cout << "################" << endl << "#### SKIPPY ####" << endl << "################" << endl;
+	std::cout << "################" << std::endl << "#### SKIPPY ####" << std::endl << "################" << std::endl;
     Stopwatch stopwatch = Stopwatch(this->iterations);
 
     stopwatch.start();
