@@ -10,6 +10,7 @@ namespace Benchmark
 
 Skippy::Skippy(std::string theAddress): Benchmark(theAddress)
 {
+	this->device = theAddress;
 	this->fd = open64(theAddress.data(), O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
 	perror("open");
 	printf("FD %d",fd);
