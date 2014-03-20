@@ -21,14 +21,11 @@ void ResultSaver::save(Stopwatch stopwatch) {
     std::ofstream jsonp;
     printf("\n\n");
 
-    std::stringstream filename;
-    filename << "results/"<< "result" << drive << "_" << testName << "-" << iterations;
-    std::stringstream filenamecsv;
-    filenamecsv << filename << ".csv";
-    std::stringstream filenamejsonp;
-    filenamejsonp << filename << ".jsonp";
-    csv.open(filenamecsv.str().c_str());
-    jsonp.open(filenamejsonp.str().c_str());
+    std::string filename = std::string("results/result") + drive + "_" + testName + "-" + std::to_string(iterations);
+    std::string filenamecsv = filename + ".csv";
+    std::string filenamejsonp = filename + ".jsonp";
+    csv.open(filenamecsv.c_str());
+    jsonp.open(filenamejsonp.c_str());
     jsonp << "data = [";
     for(int i=0; i < stopwatch.getSize(); i++)
     {

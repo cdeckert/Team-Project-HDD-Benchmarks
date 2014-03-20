@@ -20,13 +20,14 @@
 					<folderInfo id="cdt.managedbuild.toolchain.gnu.base.1839003280.1997209083" name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.base.1191974232" name="cdt.managedbuild.toolchain.gnu.base" nonInternalBuilderId="cdt.managedbuild.target.gnu.builder.base" resourceTypeBasedDiscovery="true" superClass="cdt.managedbuild.toolchain.gnu.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.target.gnu.platform.base.345177549" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
-							<builder buildPath="${workspace_loc:/HDD-Benchmark/Default}" id="cdt.managedbuild.target.gnu.builder.base.1279009089" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.base"/>
+							<builder buildPath="${workspace_loc:/HDD-Benchmark/Default}" id="cdt.managedbuild.target.gnu.builder.base.1279009089" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1023299008" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.1427056025" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
 								<option id="gnu.cpp.compiler.option.include.paths.1804147607" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/HDD-Benchmark/src/Benchmark}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/HDD-Benchmark/src}&quot;"/>
 								</option>
+								<option id="gnu.cpp.compiler.option.other.other.1104411223" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -std=c++0x" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.973988619" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.1230611433" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
