@@ -21,7 +21,12 @@ void ResultSaver::save(Stopwatch stopwatch) {
     std::ofstream jsonp;
     printf("\n\n");
 
-    std::string filename = std::string("results/result") + drive + "_" + testName + "-" + std::to_string(iterations);
+    // cut of dir (example: /dev/sdb => sdb)
+    unsigned int pos = drive.find_last_of("/\\");
+    std::string driveName = drive.substr(pos+1);
+
+    // generate filesnames
+    std::string filename = std::string("results/result-") + driveName + "_" + testName + "-" + std::to_string(iterations);
     std::string filenamecsv = filename + ".csv";
     std::string filenamejsonp = filename + ".jsonp";
     csv.open(filenamecsv);
