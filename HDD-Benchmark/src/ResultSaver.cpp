@@ -24,8 +24,8 @@ void ResultSaver::save(Stopwatch stopwatch) {
     std::string filename = std::string("results/result") + drive + "_" + testName + "-" + std::to_string(iterations);
     std::string filenamecsv = filename + ".csv";
     std::string filenamejsonp = filename + ".jsonp";
-    csv.open(filenamecsv.c_str());
-    jsonp.open(filenamejsonp.c_str());
+    csv.open(filenamecsv);
+    jsonp.open(filenamejsonp);
     jsonp << "data = [";
     for(int i=0; i < stopwatch.getSize(); i++)
     {
