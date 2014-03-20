@@ -14,9 +14,7 @@
 #include <unistd.h>	/* POSIX flags */
 #include <time.h>	/* clock_gettime(), time() */
 #include <sys/time.h>	/* gethrtime(), gettimeofday() */
-#include <iostream>
 #include <math.h>
-#include <fstream>
 
 
 #if defined(__MACH__) && defined(__APPLE__)
@@ -112,21 +110,7 @@ void Stopwatch::start()
 
 void Stopwatch::stop()
 {
-    std::ofstream csv;
-    std::ofstream jsonp;
-    printf("\n\n");
-    csv.open("results.csv");
-    jsonp.open("results.jsonp");
-    jsonp << "data = [";
-    for(int i=0; i < (lapTimeList.size()); i++)
-    {
-        jsonp << getLapTime(i) << ", ";
-        csv << i << ", " << getLapTime(i)*1000 << "\n";
-        printf("\rLines %10d                       \r", i);
-    }
-    csv.close();
-    jsonp << getLapTime(lapTimeList.size()-1) << "];";
-    jsonp.close();
+
 }
 
 void Stopwatch::lap()
@@ -165,4 +149,11 @@ double Stopwatch::getTotalTime()
 Stopwatch::~Stopwatch() {
 	// TODO Auto-generated destructor stub
 }
+
+long Stopwatch::getSize()
+{
+	return lapTimeList.size();
+}
+
+
 

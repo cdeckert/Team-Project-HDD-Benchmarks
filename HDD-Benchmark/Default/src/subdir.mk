@@ -4,14 +4,17 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/ResultSaver.cpp \
 ../src/Stopwatch.cpp \
 ../src/main.cpp 
 
 OBJS += \
+./src/ResultSaver.o \
 ./src/Stopwatch.o \
 ./src/main.o 
 
 CPP_DEPS += \
+./src/ResultSaver.d \
 ./src/Stopwatch.d \
 ./src/main.d 
 
@@ -20,7 +23,7 @@ CPP_DEPS += \
 src/%.o: ../src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	g++ -I"/home/christiandeckert/Desktop/Team-Project-HDD-Benchmarks/HDD-Benchmark/src/Benchmark" -I"/home/christiandeckert/Desktop/Team-Project-HDD-Benchmarks/HDD-Benchmark/src" -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	g++ -I"/home/chris/Team-Project-HDD-Benchmarks/HDD-Benchmark/src/Benchmark" -I"/home/chris/Team-Project-HDD-Benchmarks/HDD-Benchmark/src" -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

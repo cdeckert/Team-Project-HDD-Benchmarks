@@ -7,6 +7,7 @@ namespace Benchmark
 
 	Zoned::Zoned(std::string theAddress): Benchmark(theAddress)
 	{
+		this->device = theAddress;
 		this->fd = open64(theAddress.data(), O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
 		perror("open");
 		measureSize();
@@ -23,7 +24,7 @@ namespace Benchmark
 
 	void Zoned::execute()
 	{
-		int iterations = round(diskSize / reportSize);
+		this->iterations = round(diskSize / reportSize);
 
 		printf("iterations: %d", iterations);
 		Stopwatch stopwatch = Stopwatch(iterations);
@@ -43,6 +44,8 @@ namespace Benchmark
 			}
 		}
 		stopwatch.stop();
+		HDDTest::ResultSaver resultSaver(this->device, "zoned", iterations);
+		resultSaver.save(stopwatch);
 	}
 
 	void Zoned::measureSize()

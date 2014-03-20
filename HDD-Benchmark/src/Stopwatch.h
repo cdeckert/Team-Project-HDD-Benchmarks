@@ -2,6 +2,7 @@
 #define STOPWATCH_H_
 
 #include <vector>
+#include <fstream>
 
 
 class Stopwatch {
@@ -14,6 +15,7 @@ public:
 	void stop();
 	double getLapTime(int lap);
 	double getTotalTime();
+	long getSize();
 private:
 	std::vector<double> lapTimeList;
 	double startTime;

@@ -22,6 +22,8 @@
 namespace Benchmark {
 
 class Benchmark {
+protected:
+	std::string device;
 public:
     Benchmark(std::string);
     virtual void execute() = 0;

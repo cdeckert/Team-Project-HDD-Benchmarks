@@ -2,6 +2,7 @@
 #define ZONED_H_
 
 #include "Benchmark.h"
+#include "ResultSaver.h"
 
 namespace Benchmark
 {
@@ -20,6 +21,7 @@ namespace Benchmark
 			int reportSize;
 			char * buffer;
 			void measureSize();
+			int iterations;
 	};
 
 } /* namespace Benchmark */
