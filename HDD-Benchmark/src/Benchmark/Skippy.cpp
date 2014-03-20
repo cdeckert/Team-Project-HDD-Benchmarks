@@ -51,7 +51,7 @@ void Skippy::execute()
         stopwatch.lap();
     }
     stopwatch.stop();
-    HDDTest::ResultSaver resultSaver(this->device, "zoned", iterations);
+    HDDTest::ResultSaver resultSaver(this->device, "skippy", iterations);
 	resultSaver.save(stopwatch);
 }
 
