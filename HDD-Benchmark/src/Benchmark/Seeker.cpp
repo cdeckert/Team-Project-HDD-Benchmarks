@@ -37,15 +37,15 @@ void Benchmark::Seeker::configure(unsigned int singleSector, unsigned int largeS
 void Benchmark::Seeker::execute() {
 	std::cout << "################" << std::endl << "#### SEEKER ####" << std::endl << "################" << std::endl;
 	std::cout << "iterations: " << iterations << std::endl;
+	std::cout << "measurements: " << measurements << std::endl;
 
 
 	Stopwatch stopwatch = Stopwatch(iterations);
     //stopwatch.start();
 
 	for(long long int base = 0; base < diskSize; base += largeSize) {
-		printf("\rSkippy Test Status: %2.2f %%\r", round(base/(diskSize/100)));
+		printf("\rSkippy Test Status: %2.2f %%             \r", round(base/(diskSize/100)));
 		for(unsigned int i = 0; i < measurements; i++) {
-
 			// jump back to start
 			lseek64(fd, 0, SEEK_SET);
 			write(fd, &buffer, singleSector);
