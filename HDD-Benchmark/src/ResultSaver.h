@@ -23,6 +23,7 @@ private:
 	std::string testName;
 	long iterations;
 public:
+	ResultSaver(std::string, std::string);
 	ResultSaver(std::string, std::string, long);
 	//void save(std::vector<double>);
 	void save(Stopwatch);

@@ -7,7 +7,7 @@
 
 #include "Seeker.h"
 
-namespace HDDTest {
+namespace Benchmark {
 
 Seeker::Seeker(std::string theAddress): Benchmark(theAddress) {
 	this->device = theAddress;
@@ -23,14 +23,14 @@ Seeker::~Seeker() {
 
 }
 
-void HDDTest::Seeker::configure(int singleSector, int largeSize) {
+void Benchmark::Seeker::configure(int singleSector, int largeSize) {
 	this->measurements = (singleSector*1.0) / largeSize;
 	this->singleSector = singleSector;
 	this->largeSize = largeSize;
 	this->buffer = new char[singleSector];
 }
 
-void HDDTest::Seeker::execute() {
+void Benchmark::Seeker::execute() {
 	std::cout << "################" << std::endl << "#### SEEKER ####" << std::endl << "################" << std::endl;
 
     Stopwatch stopwatch = Stopwatch((diskSize*1.0/largeSize)*measurements);
@@ -51,11 +51,11 @@ void HDDTest::Seeker::execute() {
 	}
 
 	stopwatch.stop();
-    HDDTest::ResultSaver resultSaver(this->device, "seeker", iterations);
+    HDDTest::ResultSaver resultSaver(this->device, "seeker");
 	resultSaver.save(stopwatch);
 }
 
-void HDDTest::Seeker::measureSize() {
+void Benchmark::Seeker::measureSize() {
 	lseek64(fd, 0L, SEEK_SET);
 	this->diskSize = lseek64(fd, 0L, SEEK_END);
 	std::cout << diskSize << "DISK\n";

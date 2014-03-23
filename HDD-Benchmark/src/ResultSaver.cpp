@@ -10,6 +10,12 @@
 namespace HDDTest {
 
 
+ResultSaver::ResultSaver(std::string drive, std::string testName) {
+	this->drive = drive;
+	this->testName = testName;
+	this->iterations = 0;
+}
+
 ResultSaver::ResultSaver(std::string drive, std::string testName, long iterations) {
 	this->drive = drive;
 	this->testName = testName;
@@ -26,9 +32,15 @@ void ResultSaver::save(Stopwatch stopwatch) {
     std::string driveName = drive.substr(pos+1);
 
     // generate filesnames
-    std::string filename = std::string("results/result-") + driveName + "_" + testName + "-" + std::to_string(iterations);
+    std::string filename = std::string("results/result-") + driveName + "_" + testName;
+        // only add iterations to filename if necessary
+    if(iterations > 0) {
+    	filename += "-" + std::to_string(iterations);
+    }
     std::string filenamecsv = filename + ".csv";
     std::string filenamejsonp = filename + ".jsonp";
+
+    // open files and save data
     csv.open(filenamecsv);
     jsonp.open(filenamejsonp);
     jsonp << "data = [";

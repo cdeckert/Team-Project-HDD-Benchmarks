@@ -9,6 +9,7 @@
 #include <cstdlib>
 #include "Skippy.h"
 #include "Zoned.h"
+#include "Seeker.h"
 
 using namespace std;
 
@@ -31,7 +32,8 @@ int main(int argc, char** argv) {
     zoned.execute();*/
 
     Benchmark::Seeker seeker = Benchmark::Seeker(device);
-    seeker.configure(sectorSize, largeSize);
+    seeker.configure(sectorSize, sectorSize);
+    seeker.execute();
 
 
     return 0;

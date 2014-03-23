@@ -11,7 +11,7 @@
 #include "Benchmark.h"
 #include "ResultSaver.h"
 
-namespace HDDTest {
+namespace Benchmark {
 
 class Seeker: public Benchmark::Benchmark {
 public:
