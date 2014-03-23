@@ -39,8 +39,8 @@ void Benchmark::Seeker::execute() {
 	std::cout << "iterations: " << iterations << std::endl;
 
 
-	Stopwatch stopwatch = Stopwatch(this->iterations);
-    stopwatch.start();
+	Stopwatch stopwatch = Stopwatch(iterations);
+    //stopwatch.start();
 
 	for(long base = 0; base < diskSize; base += largeSize) {
 		for(long i = 0; i < measurements; i++) {
@@ -52,12 +52,12 @@ void Benchmark::Seeker::execute() {
 			//stopwatch.start();
 			lseek64(fd, base + (i * singleSector), SEEK_SET);
 			write(fd, &buffer, singleSector);
-			stopwatch.lap();
+			//stopwatch.lap();
 			// to HERE!
 		}
 	}
 
-	stopwatch.stop();
+	//stopwatch.stop();
     HDDTest::ResultSaver resultSaver(this->device, "seeker");
 	resultSaver.save(stopwatch);
 }
