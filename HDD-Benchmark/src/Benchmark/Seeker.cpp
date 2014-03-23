@@ -49,15 +49,15 @@ void Benchmark::Seeker::execute() {
 			write(fd, &buffer, singleSector);
 
 			// time from HERE!
-			//stopwatch.start();
+			stopwatch.start();
 			lseek64(fd, base + (i * singleSector), SEEK_SET);
 			write(fd, &buffer, singleSector);
-			//stopwatch.lap();
+			stopwatch.lap();
 			// to HERE!
 		}
 	}
 
-	//stopwatch.stop();
+	stopwatch.stop();
     HDDTest::ResultSaver resultSaver(this->device, "seeker");
 	resultSaver.save(stopwatch);
 }
