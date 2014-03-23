@@ -29,9 +29,9 @@ void Benchmark::Seeker::configure(int singleSector, int largeSize) {
 	this->largeSize = largeSize;
 	this->buffer = new char[singleSector];
 
-	unsigned long long int tmp = diskSize;
-	tmp /= largeSize;
-	tmp *= measurements;
+	this->iterations = diskSize;
+	this->iterations /= largeSize;
+	this->iterations *= measurements;
 }
 
 void Benchmark::Seeker::execute() {
