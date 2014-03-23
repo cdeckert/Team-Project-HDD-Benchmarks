@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
     zoned.execute();*/
 
     Benchmark::Seeker seeker = Benchmark::Seeker(device);
-    seeker.configure(sectorSize, sectorSize);
+    seeker.configure(sectorSize, 1024);
 
     try {
         seeker.execute();

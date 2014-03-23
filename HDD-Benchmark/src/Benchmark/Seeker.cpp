@@ -43,7 +43,9 @@ void Benchmark::Seeker::execute() {
     //stopwatch.start();
 
 	for(long long int base = 0; base < diskSize; base += largeSize) {
+		printf("\rSkippy Test Status: %2.2f %%\r", round(base/(diskSize/100)));
 		for(unsigned int i = 0; i < measurements; i++) {
+
 			// jump back to start
 			lseek64(fd, 0, SEEK_SET);
 			write(fd, &buffer, singleSector);
