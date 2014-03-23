@@ -43,8 +43,8 @@ void Benchmark::Seeker::execute() {
 			write(fd, &buffer, singleSector);
 
 			// time from HERE!
-			//lseek64(fd, base + (i * singleSector), SEEK_SET);
-			//write(fd, &buffer, singleSector);
+			lseek64(fd, base + (i * singleSector), SEEK_SET);
+			write(fd, &buffer, singleSector);
 			//stopwatch.lap();
 			// to HERE!
 		}
