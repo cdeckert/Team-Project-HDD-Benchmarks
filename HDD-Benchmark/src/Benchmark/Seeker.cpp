@@ -40,11 +40,11 @@ void Benchmark::Seeker::execute() {
 		for(long i = 0; i < measurements; i++) {
 			// jump back to start
 			lseek64(fd, 0, SEEK_SET);
-			write(fd, buffer, singleSector);
+			write(fd, &buffer, singleSector);
 
 			// time from HERE!
 			lseek64(fd, base + (i * singleSector), SEEK_SET);
-			write(fd, buffer, singleSector);
+			write(fd, &buffer, singleSector);
 			stopwatch.lap();
 			// to HERE!
 		}
