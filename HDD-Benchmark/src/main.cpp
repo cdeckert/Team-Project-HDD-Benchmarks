@@ -31,9 +31,10 @@ int main(int argc, char** argv) {
     zoned.configure(bufferSize, 1024, 1024*1000);
     zoned.execute();*/
 
+    Benchmark::Seeker seeker = Benchmark::Seeker(device);
+    seeker.configure(sectorSize, sectorSize);
+
     try {
-        Benchmark::Seeker seeker = Benchmark::Seeker(device);
-        seeker.configure(sectorSize, sectorSize);
         seeker.execute();
     } catch(std::bad_alloc& ba) {
     	std::cerr << "bad alloc: " << ba.what() << "\n";
