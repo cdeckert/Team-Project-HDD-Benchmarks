@@ -33,8 +33,8 @@ void Benchmark::Seeker::configure(int singleSector, int largeSize) {
 void Benchmark::Seeker::execute() {
 	std::cout << "################" << std::endl << "#### SEEKER ####" << std::endl << "################" << std::endl;
 
-    Stopwatch stopwatch = Stopwatch((diskSize*1.0/largeSize)*measurements);
-    stopwatch.start();
+    //Stopwatch stopwatch = Stopwatch((diskSize*1.0/largeSize)*measurements);
+    //stopwatch.start();
 
 	for(long base = 0; base < diskSize; base += largeSize) {
 		for(long i = 0; i < measurements; i++) {
@@ -43,16 +43,16 @@ void Benchmark::Seeker::execute() {
 			write(fd, &buffer, singleSector);
 
 			// time from HERE!
-			lseek64(fd, base + (i * singleSector), SEEK_SET);
-			write(fd, &buffer, singleSector);
-			stopwatch.lap();
+			//lseek64(fd, base + (i * singleSector), SEEK_SET);
+			//write(fd, &buffer, singleSector);
+			//stopwatch.lap();
 			// to HERE!
 		}
 	}
 
-	stopwatch.stop();
-    HDDTest::ResultSaver resultSaver(this->device, "seeker");
-	resultSaver.save(stopwatch);
+	//stopwatch.stop();
+    //HDDTest::ResultSaver resultSaver(this->device, "seeker");
+	//resultSaver.save(stopwatch);
 }
 
 void Benchmark::Seeker::measureSize() {
