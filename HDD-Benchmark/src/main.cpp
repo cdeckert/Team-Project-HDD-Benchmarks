@@ -18,9 +18,9 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
-    int iterations = 1000;
-    int sectorSize = 512;
-    int bufferSize = 1024;
+    unsigned int iterations = 1000;
+    unsigned int sectorSize = 512;
+    unsigned int bufferSize = 1024;
     std::string device = "/dev/sdb";
 
     /*Benchmark::Skippy skippy = Benchmark::Skippy(device);

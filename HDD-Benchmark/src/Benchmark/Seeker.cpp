@@ -23,7 +23,7 @@ Seeker::~Seeker() {
 
 }
 
-void Benchmark::Seeker::configure(int singleSector, int largeSize) {
+void Benchmark::Seeker::configure(unsigned int singleSector, unsigned int largeSize) {
 	this->measurements = singleSector / largeSize;
 	this->singleSector = singleSector;
 	this->largeSize = largeSize;
@@ -42,8 +42,8 @@ void Benchmark::Seeker::execute() {
 	Stopwatch stopwatch = Stopwatch(iterations);
     //stopwatch.start();
 
-	for(long base = 0; base < diskSize; base += largeSize) {
-		for(long i = 0; i < measurements; i++) {
+	for(long long int base = 0; base < diskSize; base += largeSize) {
+		for(unsigned int i = 0; i < measurements; i++) {
 			// jump back to start
 			lseek64(fd, 0, SEEK_SET);
 			write(fd, &buffer, singleSector);

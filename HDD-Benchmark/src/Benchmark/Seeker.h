@@ -17,14 +17,14 @@ class Seeker: public Benchmark::Benchmark {
 public:
 	Seeker(std::string);
 	void execute();
-	void configure(int, int);
+	void configure(unsigned int, unsigned int);
 	~Seeker();
 private:
 	int fd;
 	off64_t diskSize;
-	int largeSize;
-	int measurements;
-	int singleSector;
+	unsigned int largeSize;
+	unsigned int measurements;
+	unsigned int singleSector;
 	unsigned int iterations;
 	char* buffer;
 	void measureSize();
