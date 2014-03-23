@@ -24,7 +24,7 @@ Seeker::~Seeker() {
 }
 
 void Benchmark::Seeker::configure(int singleSector, int largeSize) {
-	this->measurements = (singleSector*1.0) / largeSize;
+	this->measurements = singleSector / largeSize;
 	this->singleSector = singleSector;
 	this->largeSize = largeSize;
 	this->buffer = new char[singleSector];
@@ -36,11 +36,11 @@ void Benchmark::Seeker::configure(int singleSector, int largeSize) {
 
 void Benchmark::Seeker::execute() {
 	std::cout << "################" << std::endl << "#### SEEKER ####" << std::endl << "################" << std::endl;
+	std::cout << "iterations: " << iterations << std::endl;
 
 
-
-	Stopwatch stopwatch = Stopwatch(iterations);
-    //stopwatch.start();
+	Stopwatch stopwatch = Stopwatch(this->iterations);
+    stopwatch.start();
 
 	for(long base = 0; base < diskSize; base += largeSize) {
 		for(long i = 0; i < measurements; i++) {
@@ -49,7 +49,7 @@ void Benchmark::Seeker::execute() {
 			write(fd, &buffer, singleSector);
 
 			// time from HERE!
-			stopwatch.start();
+			//stopwatch.start();
 			lseek64(fd, base + (i * singleSector), SEEK_SET);
 			write(fd, &buffer, singleSector);
 			stopwatch.lap();
