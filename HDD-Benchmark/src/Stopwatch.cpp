@@ -97,7 +97,7 @@ static double getTime()
 	#endif
 }
 
-Stopwatch::Stopwatch(int iterations) {
+Stopwatch::Stopwatch(unsigned long long int iterations) {
 	lapTimeList.reserve(iterations);
     startTime = -1;
     perror("Stopwatch");
@@ -120,7 +120,7 @@ void Stopwatch::lap()
 	start();
 }
 
-double Stopwatch::getLapTime(int lap)
+double Stopwatch::getLapTime(unsigned long long int lap)
 {
 	if(lap < lapTimeList.size())
 	{
@@ -150,7 +150,7 @@ Stopwatch::~Stopwatch() {
 	// TODO Auto-generated destructor stub
 }
 
-long Stopwatch::getSize()
+size_t Stopwatch::getSize()
 {
 	return lapTimeList.size();
 }

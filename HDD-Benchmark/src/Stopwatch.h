@@ -7,15 +7,15 @@
 
 class Stopwatch {
 public:
-	Stopwatch(int);
+	Stopwatch(unsigned long long int);
 	virtual ~Stopwatch();
 
 	void start();
 	void lap();
 	void stop();
-	double getLapTime(int lap);
+	double getLapTime(unsigned long long int lap);
 	double getTotalTime();
-	long getSize();
+	size_t getSize();
 private:
 	std::vector<double> lapTimeList;
 	double startTime;

@@ -25,6 +25,7 @@ private:
 	int largeSize;
 	int measurements;
 	int singleSector;
+	unsigned long long int iterations;
 	char* buffer;
 	void measureSize();
 };
