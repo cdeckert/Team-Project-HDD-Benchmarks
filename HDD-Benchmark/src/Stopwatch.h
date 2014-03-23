@@ -7,13 +7,13 @@
 
 class Stopwatch {
 public:
-	Stopwatch(unsigned long long int);
+	Stopwatch(unsigned int);
 	virtual ~Stopwatch();
 
 	void start();
 	void lap();
 	void stop();
-	double getLapTime(unsigned long long int lap);
+	double getLapTime(unsigned int lap);
 	double getTotalTime();
 	size_t getSize();
 private:
