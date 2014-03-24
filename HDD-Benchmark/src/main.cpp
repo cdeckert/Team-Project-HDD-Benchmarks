@@ -13,13 +13,10 @@
 
 using namespace std;
 
-/*
- * 
- */
 int main(int argc, char** argv) {
 
     unsigned int iterations = 1000;
-    unsigned int sectorSize = 512;
+    unsigned int sectorSize = 1024*1024;
     unsigned int bufferSize = 1024;
     std::string device = "/dev/sdb";
 
@@ -32,7 +29,7 @@ int main(int argc, char** argv) {
     zoned.execute();*/
 
     Benchmark::Seeker seeker = Benchmark::Seeker(device);
-    seeker.configure(sectorSize, 512);
+    seeker.configure(sectorSize, sectorSize);
 
     try {
         seeker.execute();
