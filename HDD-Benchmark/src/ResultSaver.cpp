@@ -24,7 +24,7 @@ ResultSaver::ResultSaver(std::string drive, std::string testName, long iteration
 
 void ResultSaver::save(Stopwatch stopwatch) {
     std::ofstream csv;
-    std::ofstream jsonp;
+    std::ofstream json;
     printf("\n\n");
 
     // cut of dir (example: /dev/sdb => sdb)
@@ -42,17 +42,20 @@ void ResultSaver::save(Stopwatch stopwatch) {
 
     // open files and save data
     csv.open(filenamecsv);
-    jsonp.open(filenamejsonp);
-    jsonp << "data = [";
+    json.open(filenamejsonp);
+    json << "{\"data\": ";
     for(int i=0; i < stopwatch.getSize(); i++)
     {
-        jsonp << stopwatch.getLapTime(i) << ", ";
+        json << stopwatch.getLapTime(i) << ",\n";
         csv << i << ", " << stopwatch.getLapTime(i)*1000 << "\n";
         printf("\rLines %10d                       \r", i);
     }
     csv.close();
-    jsonp << stopwatch.getLapTime(stopwatch.getSize()-1) << "];";
-    jsonp.close();
+    json << stopwatch.getLapTime(stopwatch.getSize()-1) << "], ";
+    json << "\"testName\": \"" << testName << "\", ";
+    json << "\"drive\": \"" << drive << "\"";
+    json << "}";
+    json.close();
 }
 
 ResultSaver::~ResultSaver() {
