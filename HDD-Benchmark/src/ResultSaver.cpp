@@ -38,12 +38,12 @@ void ResultSaver::save(Stopwatch stopwatch) {
     	filename += "-" + std::to_string(iterations);
     }
     std::string filenamecsv = filename + ".csv";
-    std::string filenamejsonp = filename + ".jsonp";
+    std::string filenamejsonp = filename + ".json";
 
     // open files and save data
     csv.open(filenamecsv);
     json.open(filenamejsonp);
-    json << "{\"data\": ";
+    json << "{\"data\": [";
     for(int i=0; i < stopwatch.getSize(); i++)
     {
         json << stopwatch.getLapTime(i) << ",\n";
