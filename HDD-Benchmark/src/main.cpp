@@ -16,8 +16,9 @@ using namespace std;
 int main(int argc, char** argv) {
 
     unsigned int iterations = 1000;
-    unsigned int sectorSize = 1024*1024;
+    unsigned int sectorSize = 512;
     unsigned int bufferSize = 1024;
+    unsigned int stepSize_seeker = 1024*1024;
     std::string device = "/dev/sdb";
 
     Benchmark::Skippy skippy = Benchmark::Skippy(device);
@@ -29,13 +30,8 @@ int main(int argc, char** argv) {
     zoned.execute();
 
     Benchmark::Seeker seeker = Benchmark::Seeker(device);
-    seeker.configure(sectorSize, sectorSize);
-
-    try {
-        seeker.execute();
-    } catch(std::bad_alloc& ba) {
-    	std::cerr << "bad alloc: " << ba.what() << "\n";
-    }
+    seeker.configure(sectorSize, stepSize_seeker);
+    seeker.execute();
 
 
     return 0;
