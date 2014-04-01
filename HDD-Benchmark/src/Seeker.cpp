@@ -23,21 +23,18 @@ Seeker::~Seeker() {
 
 }
 
-void Benchmark::Seeker::configure(unsigned int singleSector, unsigned int largeSize) {
-	this->measurements = singleSector / largeSize;
-	this->singleSector = singleSector;
-	this->largeSize = largeSize;
-	this->buffer = new char[singleSector];
+void Benchmark::Seeker::configure(unsigned int sectorSize, unsigned int stepSize) {
+	this->sectorSize = sectorSize;
+	this->stepSize = stepSize;
+	this->buffer = new char[sectorSize];
 
 	this->iterations = diskSize;
-	this->iterations /= largeSize;
-	this->iterations *= measurements;
+	this->iterations /= stepSize;
 }
 
 void Benchmark::Seeker::execute() {
 	std::cout << "################" << std::endl << "#### SEEKER ####" << std::endl << "################" << std::endl;
 	std::cout << "iterations: " << iterations << std::endl;
-	std::cout << "measurements: " << measurements << std::endl;
 
 
 	Stopwatch stopwatch = Stopwatch(iterations);

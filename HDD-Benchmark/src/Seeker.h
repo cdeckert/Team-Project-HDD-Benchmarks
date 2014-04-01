@@ -23,9 +23,8 @@ public:
 private:
 	int fd;
 	off64_t diskSize;
-	unsigned int largeSize;
-	unsigned int measurements;
-	unsigned int singleSector;
+	unsigned int sectorSize;
+	unsigned int stepSize;
 	unsigned int iterations;
 	char* buffer;
 	void measureSize();
