@@ -1,0 +1,15 @@
+Auriga:
+/dev/sda
+/dev/sdf WD Velociraptor
+/dev/sdh WD Xe
+/dev/sdg SG Savvio
+
+Jupiter:
+/dev/sda ST19171W (alte HDD)
+
+Centaurus:
+/dev/sdd hitachi
+/dev/sde WD XE
+/dev/sdf Seagate savvio
+/dev/sdg WD Velociraptor
+/dev/sdh Seagate Constellation ES.3
