@@ -14,17 +14,18 @@
 #include <iostream>
 #include <sstream>
 #include "Stopwatch.h"
+#include "Benchmark.h"
 
 namespace HDDTest {
 
 class ResultSaver {
 private:
-	std::string drive;
-	std::string testName;
-	long iterations;
+	Benchmark::Benchmark* benchmark;
 public:
-	ResultSaver(std::string, std::string);
-	ResultSaver(std::string, std::string, long);
+	ResultSaver(Benchmark::Benchmark*);
+	//TODO ENTFERNEN
+	//ResultSaver(std::string, std::string);
+	//ResultSaver(std::string, std::string, long);
 	//void save(std::vector<double>);
 	void save(Stopwatch);
 	~ResultSaver();

@@ -24,9 +24,13 @@ namespace Benchmark {
 class Benchmark {
 protected:
 	std::string device;
+	std::string testName;
 public:
     Benchmark(std::string);
     virtual void execute() = 0;
+    virtual std::string getResultName() = 0;
+    std::string getDevice();
+    std::string getTestName();
     virtual ~Benchmark();
 private:
 };

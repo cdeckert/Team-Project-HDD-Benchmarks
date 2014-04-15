@@ -11,6 +11,7 @@ namespace Benchmark {
 
 Seeker::Seeker(std::string theAddress): Benchmark(theAddress) {
 	this->device = theAddress;
+	this->testName = "seeker";
 	this->fd = open64(theAddress.data(), O_RDWR | O_SYNC);
 	perror("open");
 	measureSize();
@@ -54,8 +55,15 @@ void Benchmark::Seeker::execute() {
 	}
 
 	stopwatch.stop();
-    HDDTest::ResultSaver resultSaver(this->device, "seeker");
+	//TODO ENTFERNEN
+    //HDDTest::ResultSaver resultSaver(this->device, "seeker");
+    HDDTest::ResultSaver resultSaver(this);
+
 	resultSaver.save(stopwatch);
+}
+
+std::string Benchmark::Seeker::getResultName() {
+	return testName +"-"+std::to_string(stepSize);
 }
 
 void Benchmark::Seeker::measureSize() {

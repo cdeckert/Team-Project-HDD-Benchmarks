@@ -14,6 +14,7 @@ namespace Benchmark
 			void configure(int, int, int);
 			void runIteration(int);
 			void execute();
+		    std::string getResultName();
 			virtual ~Skippy();
 
 

@@ -20,6 +20,7 @@ namespace Benchmark
 			int largeSize;
 			int reportSize;
 			char * buffer;
+		    std::string getResultName();
 			void measureSize();
 			int iterations;
 	};

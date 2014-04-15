@@ -11,6 +11,7 @@ namespace Benchmark
 Skippy::Skippy(std::string theAddress): Benchmark(theAddress)
 {
 	this->device = theAddress;
+	this->testName = "skippy";
 	this->fd = open64(theAddress.data(), O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
 	perror("open");
 	printf("FD %d",fd);
@@ -52,8 +53,14 @@ void Skippy::execute()
         stopwatch.lap();
     }
     stopwatch.stop();
-    HDDTest::ResultSaver resultSaver(this->device, "skippy", iterations);
+    //TODO entfernen
+    //HDDTest::ResultSaver resultSaver(this->device, "skippy", iterations);
+    HDDTest::ResultSaver resultSaver(this);
 	resultSaver.save(stopwatch);
+}
+
+std::string Skippy::getResultName() {
+	return testName +"-"+std::to_string(iterations);
 }
 
 

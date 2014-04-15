@@ -19,6 +19,7 @@ public:
 	Seeker(std::string);
 	void execute();
 	void configure(unsigned int, unsigned int);
+    std::string getResultName();
 	~Seeker();
 private:
 	int fd;

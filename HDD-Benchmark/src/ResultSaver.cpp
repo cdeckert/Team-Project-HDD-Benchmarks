@@ -9,8 +9,10 @@
 
 namespace HDDTest {
 
-
-ResultSaver::ResultSaver(std::string drive, std::string testName) {
+ResultSaver::ResultSaver(Benchmark::Benchmark* benchmark) {
+	this->benchmark = benchmark;
+}
+/*ResultSaver::ResultSaver(std::string drive, std::string testName) {
 	this->drive = drive;
 	this->testName = testName;
 	this->iterations = 0;
@@ -20,7 +22,8 @@ ResultSaver::ResultSaver(std::string drive, std::string testName, long iteration
 	this->drive = drive;
 	this->testName = testName;
 	this->iterations = iterations;
-}
+}*/
+
 
 void ResultSaver::save(Stopwatch stopwatch) {
     std::ofstream csv;
@@ -28,15 +31,11 @@ void ResultSaver::save(Stopwatch stopwatch) {
     printf("\n\n");
 
     // cut of dir (example: /dev/sdb => sdb)
-    unsigned int pos = drive.find_last_of("/\\");
-    std::string driveName = drive.substr(pos+1);
+    unsigned int pos = benchmark->getDevice().find_last_of("/\\");
+    std::string driveName = benchmark->getDevice().substr(pos+1);
 
     // generate filesnames
-    std::string filename = std::string("results/result-") + driveName + "_" + testName;
-        // only add iterations to filename if necessary
-    if(iterations > 0) {
-    	filename += "-" + std::to_string(iterations);
-    }
+    std::string filename = std::string("results/result-") + driveName + "-" + benchmark->getResultName();
     std::string filenamecsv = filename + ".csv";
     std::string filenamejsonp = filename + ".json";
 
@@ -44,7 +43,7 @@ void ResultSaver::save(Stopwatch stopwatch) {
     csv.open(filenamecsv);
     json.open(filenamejsonp);
     json << "{\"data\": [";
-    for(int i=0; i < stopwatch.getSize(); i++)
+    for(unsigned int i=0; i < stopwatch.getSize(); i++)
     {
         json << stopwatch.getLapTime(i) << ",\n";
         csv << i << ", " << stopwatch.getLapTime(i)*1000 << "\n";
@@ -52,8 +51,8 @@ void ResultSaver::save(Stopwatch stopwatch) {
     }
     csv.close();
     json << stopwatch.getLapTime(stopwatch.getSize()-1) << "], ";
-    json << "\"testName\": \"" << testName << "\", ";
-    json << "\"drive\": \"" << drive << "\"";
+    json << "\"testName\": \"" << benchmark->getTestName() << "\", ";
+    json << "\"drive\": \"" << benchmark->getDevice() << "\"";
     json << "}";
     json.close();
 }
