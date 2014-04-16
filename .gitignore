@@ -54,7 +54,7 @@ local.properties
 
 # Executables
 *.exe
-*.out
+#*.out
 *.app
 
 # Results
