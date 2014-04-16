@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
     zoned.execute();
 
     Benchmark::Seeker seeker = Benchmark::Seeker(device);
-    seeker.configure(sectorSize, stepSize_seeker);
+    seeker.configure(sectorSize, stepSize_seeker, Benchmark::MIDDLE);
     seeker.execute();
 
 
