@@ -73,7 +73,17 @@ void Benchmark::Seeker::execute() {
 }
 
 std::string Benchmark::Seeker::getResultName() {
-	return testName +"-"+std::to_string(stepSize);
+	std::string res = testName +"-"+std::to_string(stepSize)+"-";
+	switch(returnMode) {
+		case MIDDLE:
+			res += "middle";
+			break;
+		default:
+			// BEGINNING
+			res += "beginning";
+			break;
+	}
+	return res;
 }
 
 void Benchmark::Seeker::measureSize() {
