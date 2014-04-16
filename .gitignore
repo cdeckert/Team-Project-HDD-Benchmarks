@@ -57,3 +57,5 @@ local.properties
 *.out
 *.app
 
+# Results
+results/*

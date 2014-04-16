@@ -21,13 +21,13 @@ int main(int argc, char** argv) {
     unsigned int stepSize_seeker = 1024*1024;
     std::string device = "/dev/sdb";
 
-    Benchmark::Skippy skippy = Benchmark::Skippy(device);
+    /*Benchmark::Skippy skippy = Benchmark::Skippy(device);
 	skippy.configure(iterations, sectorSize, bufferSize);
 	skippy.execute();
 
     Benchmark::Zoned zoned = Benchmark::Zoned(device);
     zoned.configure(bufferSize, 1024, 1024*1000);
-    zoned.execute();
+    zoned.execute();*/
 
     Benchmark::Seeker seeker = Benchmark::Seeker(device);
     seeker.configure(sectorSize, stepSize_seeker, Benchmark::MIDDLE);

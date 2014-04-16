@@ -73,7 +73,9 @@ void Benchmark::Seeker::execute() {
 }
 
 std::string Benchmark::Seeker::getResultName() {
-	std::string res = testName +"-"+std::to_string(stepSize)+"-";
+	std::string res = testName +"-";
+	res += HDDTest::SizeConverter::convertBytesToHumanReadable(stepSize);
+	res += "-";
 	switch(returnMode) {
 		case MIDDLE:
 			res += "middle";

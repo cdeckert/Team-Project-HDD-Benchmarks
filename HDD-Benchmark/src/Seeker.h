@@ -10,6 +10,7 @@
 
 #include "Benchmark.h"
 #include "ResultSaver.h"
+#include "SizeConverter.h"
 #include <cmath>
 
 namespace Benchmark {
