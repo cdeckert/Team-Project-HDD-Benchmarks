@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
     unsigned int iterations = 1000;
     unsigned int sectorSize = 512;
     unsigned int bufferSize = 1024;
-    unsigned int stepSize_seeker = 1024*1024;
+    unsigned int stepSize_seeker = 1024*1014;
     std::string device = "/dev/sdb";
 
     /*Benchmark::Skippy skippy = Benchmark::Skippy(device);

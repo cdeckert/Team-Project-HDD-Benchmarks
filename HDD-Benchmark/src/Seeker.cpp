@@ -30,8 +30,7 @@ void Benchmark::Seeker::configure(unsigned int sectorSize, unsigned int stepSize
 	this->returnMode = returnMode;
 	this->buffer = new char[sectorSize];
 
-	this->iterations = diskSize;
-	this->iterations /= stepSize;
+	this->iterations = diskSize / stepSize;
 }
 
 void Benchmark::Seeker::execute() {
@@ -42,7 +41,7 @@ void Benchmark::Seeker::execute() {
 	Stopwatch stopwatch = Stopwatch(iterations);
 
 	// Seeker itself
-	for(long long int i = 0; i < iterations; i++) {
+	for(unsigned long long int i = 0; i < iterations; i++) {
 		printf("\rSeeker Test Status: %2.2f %%             \r", i*1.0/(iterations/100));
 		// jump back
 		switch(returnMode) {

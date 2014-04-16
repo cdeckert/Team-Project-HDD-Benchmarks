@@ -30,7 +30,7 @@ private:
 	off64_t diskSize;
 	unsigned int sectorSize;
 	unsigned int stepSize;
-	unsigned int iterations;
+	unsigned long long int iterations;
 	enum seeker_return_mode returnMode;
 	char* buffer;
 	void measureSize();
