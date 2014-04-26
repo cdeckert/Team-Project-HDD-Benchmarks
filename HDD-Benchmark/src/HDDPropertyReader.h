@@ -17,6 +17,8 @@
 #include <errno.h>
 #include <sys/ioctl.h>
 #include <linux/hdreg.h>
+#include "JSONSerializer.h"
+
 
 #ifndef HDDPROPERTYREADER_H_
 #define HDDPROPERTYREADER_H_
@@ -29,9 +31,11 @@ class HDDPropertyReader {
 public:
 	HDDPropertyReader(std::string);
 	void execute();
+	std::string getJson();
 	virtual ~HDDPropertyReader();
 private:
 	int fd;
+	JSONSerializer json;
 
 };
 

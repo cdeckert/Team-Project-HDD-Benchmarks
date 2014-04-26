@@ -18,7 +18,9 @@ public:
 	JSONSerializer();
 	void addShort(std::string, short);
 	void addLong(std::string, unsigned long);
+
 	void addChar(std::string, char);
+	void addStr(std::string, std::string);
 	std::string getJson();
 	virtual ~JSONSerializer();
 

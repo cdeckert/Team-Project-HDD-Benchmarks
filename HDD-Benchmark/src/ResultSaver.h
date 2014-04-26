@@ -15,6 +15,7 @@
 #include <sstream>
 #include "Stopwatch.h"
 #include "Benchmark.h"
+#include "HDDPropertyReader.h"
 
 namespace HDDTest {
 

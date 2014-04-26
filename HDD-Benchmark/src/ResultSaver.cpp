@@ -30,6 +30,11 @@ void ResultSaver::save(Stopwatch stopwatch) {
     std::ofstream json;
     printf("\n\n");
 
+    // read properties
+    HDDPropertyReader propReader = HDDPropertyReader(benchmark->getDevice());
+    propReader.execute();
+
+
     // cut of dir (example: /dev/sdb => sdb)
     unsigned int pos = benchmark->getDevice().find_last_of("/\\");
     std::string driveName = benchmark->getDevice().substr(pos+1);
@@ -52,7 +57,8 @@ void ResultSaver::save(Stopwatch stopwatch) {
     csv.close();
     json << stopwatch.getLapTime(stopwatch.getSize()-1) << "], ";
     json << "\"testName\": \"" << benchmark->getTestName() << "\", ";
-    json << "\"drive\": \"" << benchmark->getDevice() << "\"";
+    json << "\"drive\": \"" << benchmark->getDevice() << "\",";
+    json << "\"properties\": " << propReader.getJson();
     json << "}";
     json.close();
 }
