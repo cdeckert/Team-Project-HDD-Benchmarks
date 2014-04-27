@@ -42,11 +42,8 @@ void Benchmark::Seeker::execute() {
 
 	// Seeker itself
 	for(unsigned long long int i = 0; i < iterations; i++) {
-<<<<<<< HEAD
 		printf("\rSeeker Test Status: %2.2f %%             \r", i*1.0/(iterations/100));
-=======
 		printf("\rSeeker Test Status: %2.2f %%             \r", i*1.0/(iterations/100));
->>>>>>> origin/feature/PropertyReader
 		// jump back
 		switch(returnMode) {
 			case MIDDLE:

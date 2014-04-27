@@ -1,12 +1,3 @@
-15:27:59 **** Incremental Build of configuration Debug for project HDD-Benchmark ****
+18:24:51 **** Incremental Build of configuration Debug for project HDD-Benchmark ****
 make all 
-Building file: ../src/ResultSaver.cpp
-Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++0x -MMD -MP -MF"src/ResultSaver.d" -MT"src/ResultSaver.d" -o "src/ResultSaver.o" "../src/ResultSaver.cpp"
-Finished building: ../src/ResultSaver.cpp
- 
-Building target: HDD-Benchmark
-Invoking: GCC C++ Linker
-g++  -o "HDD-Benchmark"  ./src/Benchmark.o ./src/HDDPropertyReader.o ./src/JSONSerializer.o ./src/ResultSaver.o ./src/Seeker.o ./src/Skippy.o ./src/Stopwatch.o ./src/Zoned.o ./src/main.o   
-Finished building target: HDD-Benchmark
- 
+make: Nothing to be done for `all'.

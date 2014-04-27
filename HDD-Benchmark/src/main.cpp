@@ -22,21 +22,13 @@ int main(int argc, char** argv) {
     std::string device = "/dev/sdb";
 
     /*Benchmark::Skippy skippy = Benchmark::Skippy(device);
-<<<<<<< HEAD
 	skippy.configure(iterations, sectorSize, bufferSize);
 	skippy.execute();
 
     Benchmark::Zoned zoned = Benchmark::Zoned(device);
     zoned.configure(bufferSize, 1024, 1024*1000);
     zoned.execute();*/
-=======
-skippy.configure(iterations, sectorSize, bufferSize);
-skippy.execute();
 
-Benchmark::Zoned zoned = Benchmark::Zoned(device);
-zoned.configure(bufferSize, 1024, 1024*1000);
-zoned.execute();*/
->>>>>>> origin/feature/PropertyReader
 
     Benchmark::Seeker seeker = Benchmark::Seeker(device);
     seeker.configure(sectorSize, stepSize_seeker, Benchmark::MIDDLE);
