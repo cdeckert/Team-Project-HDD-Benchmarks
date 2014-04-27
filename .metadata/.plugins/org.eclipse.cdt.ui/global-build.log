@@ -1,9 +1,9 @@
-23:15:32 **** Incremental Build of configuration Debug for project HDD-Benchmark ****
+15:27:59 **** Incremental Build of configuration Debug for project HDD-Benchmark ****
 make all 
-Building file: ../src/HDDPropertyReader.cpp
+Building file: ../src/ResultSaver.cpp
 Invoking: GCC C++ Compiler
-g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++0x -MMD -MP -MF"src/HDDPropertyReader.d" -MT"src/HDDPropertyReader.d" -o "src/HDDPropertyReader.o" "../src/HDDPropertyReader.cpp"
-Finished building: ../src/HDDPropertyReader.cpp
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++0x -MMD -MP -MF"src/ResultSaver.d" -MT"src/ResultSaver.d" -o "src/ResultSaver.o" "../src/ResultSaver.cpp"
+Finished building: ../src/ResultSaver.cpp
  
 Building target: HDD-Benchmark
 Invoking: GCC C++ Linker

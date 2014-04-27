@@ -24,26 +24,35 @@ Seeker::~Seeker() {
 
 }
 
-void Benchmark::Seeker::configure(unsigned int sectorSize, unsigned int stepSize) {
+void Benchmark::Seeker::configure(unsigned int sectorSize, unsigned int stepSize, enum seeker_return_mode returnMode) {
 	this->sectorSize = sectorSize;
 	this->stepSize = stepSize;
+	this->returnMode = returnMode;
 	this->buffer = new char[sectorSize];
 
-	this->iterations = diskSize;
-	this->iterations /= stepSize;
+	this->iterations = diskSize / stepSize;
 }
 
 void Benchmark::Seeker::execute() {
 	std::cout << "################" << std::endl << "#### SEEKER ####" << std::endl << "################" << std::endl;
 	std::cout << "iterations: " << iterations << std::endl;
 
-
+	// initialize stopwatch
 	Stopwatch stopwatch = Stopwatch(iterations);
 
-	for(long long int i = 0; i < iterations; i++) {
-		printf("\rSkippy Test Status: %2.2f %%             \r", i*1.0/(iterations/100));
-		// jump back to start
-		lseek64(fd, 0, SEEK_SET);
+	// Seeker itself
+	for(unsigned long long int i = 0; i < iterations; i++) {
+		printf("\rSeeker Test Status: %2.2f %%             \r", i*1.0/(iterations/100));
+		// jump back
+		switch(returnMode) {
+			case MIDDLE:
+				lseek64(fd, diskSize/2, SEEK_SET);
+				break;
+			default:
+				// BEGINNING
+				lseek64(fd, 0, SEEK_SET);
+				break;
+		}
 		write(fd, &buffer, sectorSize);
 
 		// time from HERE!
@@ -63,7 +72,19 @@ void Benchmark::Seeker::execute() {
 }
 
 std::string Benchmark::Seeker::getResultName() {
-	return testName +"-"+std::to_string(stepSize);
+	std::string res = testName +"-";
+	res += HDDTest::SizeConverter::convertBytesToHumanReadable(stepSize);
+	res += "-";
+	switch(returnMode) {
+		case MIDDLE:
+			res += "middle";
+			break;
+		default:
+			// BEGINNING
+			res += "beginning";
+			break;
+	}
+	return res;
 }
 
 void Benchmark::Seeker::measureSize() {

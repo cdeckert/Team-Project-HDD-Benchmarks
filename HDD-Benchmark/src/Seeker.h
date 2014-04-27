@@ -10,15 +10,19 @@
 
 #include "Benchmark.h"
 #include "ResultSaver.h"
+#include "SizeConverter.h"
 #include <cmath>
 
 namespace Benchmark {
+
+// where the return address is (where seeker jumps to before jumping to its new measuring point)
+enum seeker_return_mode {BEGINNING, MIDDLE};
 
 class Seeker: public Benchmark::Benchmark {
 public:
 	Seeker(std::string);
 	void execute();
-	void configure(unsigned int, unsigned int);
+	void configure(unsigned int, unsigned int, enum seeker_return_mode);
     std::string getResultName();
 	~Seeker();
 private:
@@ -26,7 +30,8 @@ private:
 	off64_t diskSize;
 	unsigned int sectorSize;
 	unsigned int stepSize;
-	unsigned int iterations;
+	unsigned long long int iterations;
+	enum seeker_return_mode returnMode;
 	char* buffer;
 	void measureSize();
 };
