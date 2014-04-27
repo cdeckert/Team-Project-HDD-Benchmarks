@@ -5,6 +5,8 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/Benchmark.cpp \
+../src/HDDPropertyReader.cpp \
+../src/JSONSerializer.cpp \
 ../src/ResultSaver.cpp \
 ../src/Seeker.cpp \
 ../src/SizeConverter.cpp \
@@ -15,6 +17,8 @@ CPP_SRCS += \
 
 OBJS += \
 ./src/Benchmark.o \
+./src/HDDPropertyReader.o \
+./src/JSONSerializer.o \
 ./src/ResultSaver.o \
 ./src/Seeker.o \
 ./src/SizeConverter.o \
@@ -25,6 +29,8 @@ OBJS += \
 
 CPP_DEPS += \
 ./src/Benchmark.d \
+./src/HDDPropertyReader.d \
+./src/JSONSerializer.d \
 ./src/ResultSaver.d \
 ./src/Seeker.d \
 ./src/SizeConverter.d \
