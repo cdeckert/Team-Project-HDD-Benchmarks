@@ -19,15 +19,20 @@ int main(int argc, char** argv) {
     unsigned int sectorSize = 512;
     unsigned int bufferSize = 1024;
     unsigned int stepSize_seeker = 1024*1014;
-    std::string device = "/dev/sdb";
+    std::string device = "/dev/sdd";
 
-    /*Benchmark::Skippy skippy = Benchmark::Skippy(device);
+    std::cout << "Enter device address:" << std::flush;
+    std::cin >> device;
+
+    std::cout << "Test started for " << device << "\n";
+
+    Benchmark::Skippy skippy = Benchmark::Skippy(device);
 	skippy.configure(iterations, sectorSize, bufferSize);
 	skippy.execute();
 
     Benchmark::Zoned zoned = Benchmark::Zoned(device);
     zoned.configure(bufferSize, 1024, 1024*1000);
-    zoned.execute();*/
+    zoned.execute();
 
 
     Benchmark::Seeker seeker = Benchmark::Seeker(device);
