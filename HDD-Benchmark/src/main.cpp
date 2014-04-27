@@ -1,9 +1,9 @@
-/* 
- * File:   main.cpp
- * Author: christiandeckert
- *
- * Created on March 8, 2014, 8:32 PM
- */
+/*
+* File: main.cpp
+* Author: christiandeckert
+*
+* Created on March 8, 2014, 8:32 PM
+*/
 
 
 #include <cstdlib>
@@ -22,12 +22,21 @@ int main(int argc, char** argv) {
     std::string device = "/dev/sdb";
 
     /*Benchmark::Skippy skippy = Benchmark::Skippy(device);
+<<<<<<< HEAD
 	skippy.configure(iterations, sectorSize, bufferSize);
 	skippy.execute();
 
     Benchmark::Zoned zoned = Benchmark::Zoned(device);
     zoned.configure(bufferSize, 1024, 1024*1000);
     zoned.execute();*/
+=======
+skippy.configure(iterations, sectorSize, bufferSize);
+skippy.execute();
+
+Benchmark::Zoned zoned = Benchmark::Zoned(device);
+zoned.configure(bufferSize, 1024, 1024*1000);
+zoned.execute();*/
+>>>>>>> origin/feature/PropertyReader
 
     Benchmark::Seeker seeker = Benchmark::Seeker(device);
     seeker.configure(sectorSize, stepSize_seeker, Benchmark::MIDDLE);
@@ -36,4 +45,3 @@ int main(int argc, char** argv) {
 
     return 0;
 }
-
