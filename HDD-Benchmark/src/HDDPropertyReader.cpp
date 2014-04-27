@@ -40,7 +40,7 @@ void HDDTest::HDDPropertyReader::execute() {
 
 	ioctl(fd, HDIO_GET_IDENTITY, &identity);
 	s.assign((char*)&identity[0], sizeof(identity));
-	json.addStr("HDIO_GET_IDENTITY", s);
+	//json.addStr("HDIO_GET_IDENTITY", s);
 
 
 	ioctl(fd, HDIO_GET_KEEPSETTINGS, &valLong);
