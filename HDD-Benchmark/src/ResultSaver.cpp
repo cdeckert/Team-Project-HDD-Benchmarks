@@ -59,7 +59,6 @@ void ResultSaver::save(Stopwatch stopwatch) {
     json << "\"testName\": \"" << benchmark->getTestName() << "\", ";
     json << "\"drive\": \"" << benchmark->getDevice() << "\",";
     json << "\"properties\": " << propReader.getJson();
-    json << "}";
     json.close();
 }
 
