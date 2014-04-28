@@ -1,8 +1,5 @@
 Auriga:
-/dev/sda
-/dev/sdf WD Velociraptor
-/dev/sdh WD Xe
-/dev/sdg SG Savvio
+/dev/sdb
 
 Jupiter:
 /dev/sda ST19171W (alte HDD)
