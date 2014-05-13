@@ -15,7 +15,7 @@ using namespace std;
 
 int main(int argc, char** argv) {
 
-    unsigned int iterations = 1000;
+    unsigned int iterations = 100000;
     unsigned int sectorSize = 512;
     unsigned int bufferSize = 1024;
     unsigned int stepSize_seeker = 1024*1014;
@@ -30,14 +30,14 @@ int main(int argc, char** argv) {
 	skippy.configure(iterations, sectorSize, bufferSize);
 	skippy.execute();
 
-    Benchmark::Zoned zoned = Benchmark::Zoned(device);
+    /*Benchmark::Zoned zoned = Benchmark::Zoned(device);
     zoned.configure(bufferSize, 1024, 1024*1000);
     zoned.execute();
 
 
     Benchmark::Seeker seeker = Benchmark::Seeker(device);
     seeker.configure(sectorSize, stepSize_seeker, Benchmark::MIDDLE);
-    seeker.execute();
+    seeker.execute();*/
 
 
     return 0;
