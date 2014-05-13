@@ -36,26 +36,26 @@ local.properties
 
 ### C++ ###
 # Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#*.slo
+#*.lo
+#*.o
+#*.obj
 
 # Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+#*.so
+#*.dylib
+#*.dll
 
 # Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+#*.lai
+#*.la
+#*.a
+#*.lib
 
 # Executables
-*.exe
+#*.exe
 #*.out
-*.app
+#*.app
 
 # Results
 results/
