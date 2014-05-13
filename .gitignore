@@ -58,4 +58,4 @@ local.properties
 *.app
 
 # Results
-results/*
+results/
