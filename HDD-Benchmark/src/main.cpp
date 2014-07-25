@@ -10,6 +10,7 @@
 #include "Skippy.h"
 #include "Zoned.h"
 #include "Seeker.h"
+#include "HDDModePageReader.h"
 
 using namespace std;
 
@@ -26,11 +27,15 @@ int main(int argc, char** argv) {
 
     std::cout << "Test started for " << device << "\n";
 
-    Benchmark::Skippy skippy = Benchmark::Skippy(device);
+    HDDTest::HDDModePageReader HDDModePageReader1 = HDDTest::HDDModePageReader(device);
+    HDDModePageReader1.read();
+    std::cout << HDDModePageReader1.getVendor() << " " << HDDModePageReader1.getDeviceName() << "\n";
+
+    /*Benchmark::Skippy skippy = Benchmark::Skippy(device);
 	skippy.configure(iterations, sectorSize, bufferSize);
 	skippy.execute();
 
-    /*Benchmark::Zoned zoned = Benchmark::Zoned(device);
+    Benchmark::Zoned zoned = Benchmark::Zoned(device);
     zoned.configure(bufferSize, 1024, 1024*1000);
     zoned.execute();
 
