@@ -60,7 +60,7 @@ std::string HDDModePageReader::findValue(const char* valueName, const char* str)
 			break;
 	}
 	for(int i = 32; i >= 0; i--) {
-		if(resultValue[i] == ' ' || resultValue[i] == '\0' || resultValue[i] == '\n')
+		if(resultValue[i] == ' ' || resultValue[i] == '\0' || resultValue[i] == '\n' || !(('a' <= resultValue[i] && resultValue[i] < 'z') || ('A' <= resultValue[i] && resultValue[i] < 'Z') || ('0' <= resultValue[i] && resultValue[i] < '9')))
 			resultValue[i] = '\0';
 		else
 			break;

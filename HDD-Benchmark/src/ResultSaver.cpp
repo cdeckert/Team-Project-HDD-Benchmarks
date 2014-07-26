@@ -39,10 +39,15 @@ void ResultSaver::save(Stopwatch stopwatch) {
     unsigned int pos = benchmark->getDevice().find_last_of("/\\");
     std::string driveName = benchmark->getDevice().substr(pos+1);
 
+    // get name of HDD
+    HDDTest::HDDModePageReader HDDModePageReader1 = HDDTest::HDDModePageReader(benchmark->getDevice());
+    HDDModePageReader1.read();
+
     // generate filesnames
-    std::string filename = std::string("results/result-") + driveName + "-" + benchmark->getResultName();
+    std::string filename = std::string("results/result-") + HDDModePageReader1.getVendor() + "-" + HDDModePageReader1.getDeviceName() + "-" + benchmark->getResultName(); //
     std::string filenamecsv = filename + ".csv";
     std::string filenamejsonp = filename + ".json";
+    std::cout << "filename: " << filename << "\n";
 
     // open files and save data
     csv.open(filenamecsv);
@@ -58,6 +63,8 @@ void ResultSaver::save(Stopwatch stopwatch) {
     json << stopwatch.getLapTime(stopwatch.getSize()-1) << "], ";
     json << "\"testName\": \"" << benchmark->getTestName() << "\", ";
     json << "\"drive\": \"" << benchmark->getDevice() << "\",";
+    json << "\"vendor\": \"" << HDDModePageReader1.getVendor() << "\",";
+    json << "\"deviceName\": \"" << HDDModePageReader1.getDeviceName() << "\",";
     json << "\"properties\": " << propReader.getJson();
     json.close();
 }
