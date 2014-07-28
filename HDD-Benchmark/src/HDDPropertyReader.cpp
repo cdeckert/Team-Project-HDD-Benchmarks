@@ -75,7 +75,7 @@ void HDDTest::HDDPropertyReader::execute() {
 	json.addLong("HDIO_GET_BUSSTATE", valLong);
 
 
-	std::cout << json.getJson() << "\n";
+	//std::cout << json.getJson() << "\n";
 }
 
 std::string HDDTest::HDDPropertyReader::getJson()

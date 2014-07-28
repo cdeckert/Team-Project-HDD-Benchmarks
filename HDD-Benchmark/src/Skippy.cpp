@@ -13,21 +13,21 @@ Skippy::Skippy(std::string theAddress): Benchmark(theAddress)
 	this->device = theAddress;
 	this->testName = "skippy";
 	this->fd = open64(theAddress.data(), O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
-	perror("open");
-	printf("FD %d",fd);
-	perror("abc");
+	//perror("open");
+	//printf("FD %d\n",fd);
+	//perror("abc");
     lseek64(fd, 0L, SEEK_SET);
-    perror("seek to start");
+    //perror("seek to start");
 }
 
 void Skippy::configure(int iterations, int singleSector, int bufferSize)
 {
 	this->iterations = iterations;
 	this->singleSector = singleSector;
-	perror("single");
+	//perror("single");
 	char* b = new char[bufferSize];
 	this->buffer = b;
-	perror("buffer");
+	//perror("buffer");
 }
 
 

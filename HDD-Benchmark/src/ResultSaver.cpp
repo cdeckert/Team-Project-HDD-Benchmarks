@@ -34,6 +34,9 @@ void ResultSaver::save(Stopwatch stopwatch) {
     HDDPropertyReader propReader = HDDPropertyReader(benchmark->getDevice());
     propReader.execute();
 
+    // read mode pages
+    HDDTest::HDDModePageReader modePageReader = HDDTest::HDDModePageReader(benchmark->getDevice());
+    modePageReader.read();
 
     // cut of dir (example: /dev/sdb => sdb)
     unsigned int pos = benchmark->getDevice().find_last_of("/\\");
@@ -65,7 +68,8 @@ void ResultSaver::save(Stopwatch stopwatch) {
     json << "\"drive\": \"" << benchmark->getDevice() << "\",";
     json << "\"vendor\": \"" << HDDModePageReader1.getVendor() << "\",";
     json << "\"deviceName\": \"" << HDDModePageReader1.getDeviceName() << "\",";
-    json << "\"properties\": " << propReader.getJson();
+    json << "\"properties\": " << propReader.getJson() << "\",";;
+    json << "\"modePages\": " << modePageReader.getJson();
     json.close();
 }
 
