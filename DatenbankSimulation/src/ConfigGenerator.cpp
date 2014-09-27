@@ -35,10 +35,7 @@ void ConfigGenerator::generate() {
 		// reading order of extends from left to right, equal distances between extends
 		unsigned long long int sizeBetweenExtends = (size_spread - size_relation) / noExtends;
 
-		// TODO DEBUG printf("number of extends: %llu\n", noExtends);
-		// TODO DEBUG printf("size between extends: %llu\n", sizeBetweenExtends);
 		for(unsigned long long int i = 0; i < noExtends; i++) {
-			//struct startSize* tmp = new struct startSize;
 			struct startSize tmp;
 			tmp.start = size_start + i*size_extends + i*sizeBetweenExtends;
 			tmp.size = size_extends;
@@ -52,17 +49,93 @@ void ConfigGenerator::generate() {
 
 	if(readMode == LEFT_TO_RIGHT && extendDistribution == ED_RANDOM) {
 		// reading order of extends from left to right, random distances between extends
+		unsigned long long int availableSlots = (size_spread - size_relation) / size_extends; // determins the number of maximum available extents in the range
+
+		bool* slots = (bool*) calloc(availableSlots, sizeof(bool)); // let us know which slots is already used)
+		printf("availableSlots: %llu\n", availableSlots); // TODO DEBUG
+		unsigned long long int i = 0;
+		init_rand();
+		while(i < noExtends) { // find out which slots to use
+			unsigned long long int newUsedSlot = rand() % availableSlots;
+
+			if(slots[newUsedSlot] == true) // this slot is already used, try again
+				continue;
+
+			slots[newUsedSlot] = true;
+			i++;
+		}
+
+		// generate config
+		i = 0;
+		for(unsigned long long int j = 0; j < availableSlots; j++) {
+			if(slots[j]) {
+				struct startSize tmp;
+				tmp.start = size_start + j*size_extends;
+				tmp.size = size_extends;
+
+				//printf("iter %5llu: %10llu - %5llu\n", i, tmp.start, tmp.size);
+				readOrder.push_back(tmp);
+				i++;
+			}
+		}
+
+		free(slots);
 	}
 
 
 	if(readMode == RM_RANDOM && extendDistribution == ED_CONSTANT) {
-		// reading order of extends randomly, equal distances between extends
+		// reading order of extends randomly, equal distances between extends  --------------------------------------------------
+		unsigned long long int sizeBetweenExtends = (size_spread - size_relation) / noExtends;
+
+		bool* slots = (bool*) calloc(noExtends, sizeof(bool)); // let us know which slots is already used)
+		unsigned long long int i = 0;
+		init_rand();
+		while(i < noExtends) { // find out which slots to use
+			unsigned long long int newUsedSlot = rand() % noExtends;
+
+			if(slots[newUsedSlot] == true) // this slot is already used, try again
+				continue;
+
+			// generate config
+			struct startSize tmp;
+			tmp.start = size_start + newUsedSlot*size_extends + newUsedSlot*sizeBetweenExtends;
+			//tmp.start = size_start + newUsedSlot*size_extends;
+			tmp.size = size_extends;
+
+			//printf("iter %5llu: %10llu - %5llu\n", i, tmp.start, tmp.size);
+			readOrder.push_back(tmp);
+			slots[newUsedSlot] = true;
+			i++;
+		}
+		free(slots);
 	}
 
 
 	if(readMode == RM_RANDOM && extendDistribution == ED_RANDOM) {
 		// reading order of extends randomly, random distances between extends
+		unsigned long long int availableSlots = (size_spread - size_relation) / size_extends; // determins the number of maximum available extents in the range
 
+		bool* slots = (bool*) calloc(availableSlots, sizeof(bool)); // let us know which slots is already used)
+		// TODO DEBUG printf("availableSlots: %llu\n", availableSlots);
+		unsigned long long int i = 0;
+		init_rand();
+		while(i < noExtends) { // find out which slots to use
+			unsigned long long int newUsedSlot = rand() % availableSlots;
+
+			if(slots[newUsedSlot] == true) // this slot is already used, try again
+				continue;
+
+			// generate config
+			struct startSize tmp;
+			tmp.start = size_start + newUsedSlot*size_extends;
+			tmp.size = size_extends;
+
+			//printf("iter %5llu: %10llu - %5llu\n", i, tmp.start, tmp.size);
+			readOrder.push_back(tmp);
+			slots[newUsedSlot] = true;
+			i++;
+		}
+		free(slots);
 	}
 }
 
@@ -89,22 +162,25 @@ void ConfigGenerator::generate() {
 }
 
     std::string ConfigGenerator::configToString() {
-    	/*
-    	enum mode_readMode readMode;
-    	enum mode_extendDistribution extendDistribution;*/
 
     	std::string result = "";
-    	result += "used block start: " + std::to_string((this->size_start)/1024);
+    	result += "used block start: @" + std::to_string((this->size_start)/1024);
     	result += "MB (size: " + std::to_string((this->size_spread)/1024) + "MB)\n";
     	result += "size of relation: " + std::to_string(size_relation/1024)+"MB\n";
     	result += "size of one extent: " + std::to_string(size_extends)+"KB\n";
     	result += "read mode: ";
-    	result += ((extendDistribution == 0) ? "left to right" : "random");
+    	result += ((readMode == 0) ? "left to right" : "random");
     	result += "\n";
     	result += "extent distribution: ";
     	result += ((extendDistribution == 0) ? "static" : "random");
     	result += "\n";
     	return result;
+    }
+    void ConfigGenerator::init_rand() {
+    	time_t t;
+
+		time(&t);
+		srand((unsigned int)t);              /* Zufallsgenerator initialisieren */
     }
 
 

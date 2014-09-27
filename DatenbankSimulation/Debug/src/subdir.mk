@@ -6,18 +6,21 @@
 CPP_SRCS += \
 ../src/ConfigGenerator.cpp \
 ../src/ExecuteTest.cpp \
+../src/HDDModePageReader.cpp \
 ../src/Stopwatch.cpp \
 ../src/main.cpp 
 
 OBJS += \
 ./src/ConfigGenerator.o \
 ./src/ExecuteTest.o \
+./src/HDDModePageReader.o \
 ./src/Stopwatch.o \
 ./src/main.o 
 
 CPP_DEPS += \
 ./src/ConfigGenerator.d \
 ./src/ExecuteTest.d \
+./src/HDDModePageReader.d \
 ./src/Stopwatch.d \
 ./src/main.d 
 

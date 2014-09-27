@@ -25,6 +25,7 @@ struct startSize {
 };
 
 class ConfigGenerator {
+private:
 	unsigned long long int size_start;
 	unsigned long long int size_spread;
 	unsigned long long int size_relation;
@@ -33,6 +34,7 @@ class ConfigGenerator {
 	enum mode_extendDistribution extendDistribution;
 
 	std::vector<struct startSize> readOrder; // marks start and size of what is read (in kb)
+	void init_rand();
 public:
 	ConfigGenerator(unsigned long long int size_start, unsigned long long int size_spread, unsigned long long int size_relation, unsigned long long int size_extends, enum mode_readMode readMode, enum mode_extendDistribution extendDistribution);
 	void generate();

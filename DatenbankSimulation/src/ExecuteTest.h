@@ -11,6 +11,7 @@
 #include "ConfigGenerator.h"
 #include "Stopwatch.h"
 #include <fcntl.h>
+#include "HDDModePageReader.h"
 
 namespace HDDTest {
 
