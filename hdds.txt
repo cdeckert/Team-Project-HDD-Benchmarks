@@ -10,3 +10,6 @@ Centaurus:
 /dev/sdf Seagate savvio
 /dev/sdg WD Velociraptor
 /dev/sdh Seagate Constellation ES.3
+
+
+sudo fix_perms_teamproj2014.sh
