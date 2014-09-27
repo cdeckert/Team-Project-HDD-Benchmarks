@@ -5,14 +5,20 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/ConfigGenerator.cpp \
+../src/ExecuteTest.cpp \
+../src/Stopwatch.cpp \
 ../src/main.cpp 
 
 OBJS += \
 ./src/ConfigGenerator.o \
+./src/ExecuteTest.o \
+./src/Stopwatch.o \
 ./src/main.o 
 
 CPP_DEPS += \
 ./src/ConfigGenerator.d \
+./src/ExecuteTest.d \
+./src/Stopwatch.d \
 ./src/main.d 
 
 

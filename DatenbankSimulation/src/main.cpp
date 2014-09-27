@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "ConfigGenerator.h"
+#include "ExecuteTest.h"
 
 using namespace std;
 
@@ -18,8 +19,15 @@ int main(int argc, char** argv) {
 	enum HDDTest::mode_readMode readMode = HDDTest::LEFT_TO_RIGHT;
 	enum HDDTest::mode_extendDistribution extendDistribution = HDDTest::ED_CONSTANT;
 
+	std::string device = "/dev/sdb";
+    std::cout << "Enter device address:" << std::flush;
+    std::cin >> device;
+
 	HDDTest::ConfigGenerator confGen = HDDTest::ConfigGenerator(size_start, size_spread, size_relation, size_extends, readMode, extendDistribution);
 	confGen.generate();
 
+	HDDTest::ExecuteTest exec = HDDTest::ExecuteTest(device);
+	double time = exec.execute(&confGen);
+	cout << "Time: " << time << "s\n";
     return 0;
 }
