@@ -13,15 +13,18 @@
 #include <stdio.h>
 #include <vector>
 
-namespace HDDTest {
+namespace HDDTest
+{
 
-struct KeyValuePair {
+struct KeyValuePair
+{
 	std::string key;
 	std::string value;
 };
 
 
-class HDDModePageReader {
+class HDDModePageReader
+{
 private:
 	std::string device;
 	std::string deviceName;
@@ -30,7 +33,7 @@ private:
 	std::vector<struct KeyValuePair> parameterList;
 
 	//std::string findValue(const char*, const char*);
-	void trimValue(std::string*);
+	void trimValue(std::string *);
 public:
 	HDDModePageReader(std::string);
 	void read();

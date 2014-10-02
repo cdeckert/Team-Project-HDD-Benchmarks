@@ -13,15 +13,17 @@
 #include <fcntl.h>
 #include "HDDModePageReader.h"
 
-namespace HDDTest {
+namespace HDDTest
+{
 
-class ExecuteTest {
+class ExecuteTest
+{
 private:
 	std::string device;
 	int fd;
 public:
 	ExecuteTest(std::string);
-	double execute(ConfigGenerator*);
+	double execute(ConfigGenerator *);
 	~ExecuteTest();
 };
 

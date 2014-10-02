@@ -5,7 +5,8 @@
 #include <fstream>
 
 
-class Stopwatch {
+class Stopwatch
+{
 public:
 	Stopwatch(unsigned int);
 	virtual ~Stopwatch();
