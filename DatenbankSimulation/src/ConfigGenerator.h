@@ -17,7 +17,7 @@
 namespace HDDTest
 {
 
-enum mode_readMode { LEFT_TO_RIGHT, RM_RANDOM};
+enum mode_readMode {LEFT_TO_RIGHT, RM_RANDOM};
 enum mode_extentDistribution {ED_CONSTANT , ED_RANDOM};
 
 struct startSize
@@ -42,14 +42,16 @@ private:
 
 	std::vector<struct startSize> readOrder; // marks start and size of what is read (in kb)
 	void init_rand();
+
 public:
 	ConfigGenerator(unsigned long long int size_start, unsigned long long int size_spread,
 					unsigned long long int size_relation, unsigned long long int size_extents,
 					enum mode_readMode readMode, enum mode_extentDistribution extentDistribution);
+	~ConfigGenerator();
+
 	void generate();
 	std::vector<struct startSize> getReadOrder() const;
-	~ConfigGenerator();
-	unsigned long long int getSizeextents() const;
+	unsigned long long int getSizeExtents() const;
 	unsigned long long int getSizeStart() const;
 	void setSizeStart(unsigned long long int sizeStart);
 	std::string configToString();

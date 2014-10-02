@@ -27,7 +27,9 @@ void HDDModePageReader::read()
 	while (!feof(pipe))
 	{
 		if (fgets(buffer, 128, pipe) != NULL)
+		{
 			result += buffer;
+		}
 	}
 	pclose(pipe);
 
@@ -117,16 +119,6 @@ std::string HDDModePageReader::getVendor()
 {
 	return vendor;
 }
-
-/*std::string HDDModePageReader::getJson() {
-    HDDTest::JSONSerializer json = HDDTest::JSONSerializer();
-
-    for(unsigned long long int i = 0; i < parameterList.size(); i++) {
-        json.addStr(parameterList[i].key, parameterList[i].value);
-    }
-
-    return json.getJson();
-}*/
 
 HDDModePageReader::~HDDModePageReader()
 {

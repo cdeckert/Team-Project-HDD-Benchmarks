@@ -18,6 +18,7 @@ ExecuteTest::ExecuteTest(std::string device)
 
 double ExecuteTest::execute(ConfigGenerator *config)
 {
+	// start by printing device & test properties
 	// paste information about test setup and drive
 	std::cout << "#################" << std::endl << "# DB SIMULATION #" << std::endl << "#################" << std::endl;
 	// read mode pages
@@ -29,7 +30,7 @@ double ExecuteTest::execute(ConfigGenerator *config)
 
 	// benchmark itself
 	// reserve space for reading
-	char *buffer = (char *) malloc(config->getSizeextents() * 1024);
+	char *buffer = (char *) malloc(config->getSizeExtents() * 1024);
 
 	// open device
 	this->fd = open64(device.data(), O_RDONLY | O_SYNC);
@@ -56,7 +57,9 @@ double ExecuteTest::execute(ConfigGenerator *config)
 		lseek64(fd, (cur.start * 1024), SEEK_SET);
 		read(fd, buffer, (cur.size * 1024));
 		if (i % 32 == 0)
+		{
 			printf("\rstatus: iteration %7llu,  %2.2f %%                      \r", (unsigned long long int)i, (double)i / (readOrder.size() / 100));
+		}
 	}
 	printf("\n");
 

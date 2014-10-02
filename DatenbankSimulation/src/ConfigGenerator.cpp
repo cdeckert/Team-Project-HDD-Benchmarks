@@ -32,7 +32,7 @@ ConfigGenerator::ConfigGenerator(unsigned long long int size_start, unsigned lon
 }
 
 /**
-*
+* ggenerates for different cases along the 2 dimentions readMode and extentDistribution
 */
 void ConfigGenerator::generate()
 {
@@ -70,8 +70,9 @@ void ConfigGenerator::generate()
 			unsigned long long int newUsedSlot = rand() % availableSlots;
 
 			if (slots[newUsedSlot] == true) // this slot is already used, try again
+			{
 				continue;
-
+			}
 			slots[newUsedSlot] = true;
 			i++;
 		}
@@ -163,7 +164,7 @@ std::vector<struct startSize> ConfigGenerator::getReadOrder() const
 	return readOrder;
 }
 
-unsigned long long int ConfigGenerator::getSizeextents() const
+unsigned long long int ConfigGenerator::getSizeExtents() const
 {
 	return size_extents;
 }
