@@ -29,7 +29,7 @@ double ExecuteTest::execute(ConfigGenerator *config)
 
 	// benchmark itself
 	// reserve space for reading
-	char *buffer = (char *) malloc(config->getSizeExtends() * 1024);
+	char *buffer = (char *) malloc(config->getSizeextents() * 1024);
 
 	// open device
 	this->fd = open64(device.data(), O_RDONLY | O_SYNC);

@@ -17,6 +17,7 @@ public:
 	double getLapTime(unsigned int lap);
 	double getTotalTime();
 	size_t getSize();
+
 private:
 	std::vector<double> lapTimeList;
 	double startTime;

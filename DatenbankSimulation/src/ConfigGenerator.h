@@ -18,7 +18,7 @@ namespace HDDTest
 {
 
 enum mode_readMode { LEFT_TO_RIGHT, RM_RANDOM};
-enum mode_extendDistribution {ED_CONSTANT , ED_RANDOM};
+enum mode_extentDistribution {ED_CONSTANT , ED_RANDOM};
 
 struct startSize
 {
@@ -29,21 +29,27 @@ struct startSize
 class ConfigGenerator
 {
 private:
+	// start of relations
 	unsigned long long int size_start;
+	// spreading of a single relation
 	unsigned long long int size_spread;
+	// size of a relation
 	unsigned long long int size_relation;
-	unsigned long long int size_extends;
+	// extent size
+	unsigned long long int size_extents;
 	enum mode_readMode readMode;
-	enum mode_extendDistribution extendDistribution;
+	enum mode_extentDistribution extentDistribution;
 
 	std::vector<struct startSize> readOrder; // marks start and size of what is read (in kb)
 	void init_rand();
 public:
-	ConfigGenerator(unsigned long long int size_start, unsigned long long int size_spread, unsigned long long int size_relation, unsigned long long int size_extends, enum mode_readMode readMode, enum mode_extendDistribution extendDistribution);
+	ConfigGenerator(unsigned long long int size_start, unsigned long long int size_spread,
+					unsigned long long int size_relation, unsigned long long int size_extents,
+					enum mode_readMode readMode, enum mode_extentDistribution extentDistribution);
 	void generate();
 	std::vector<struct startSize> getReadOrder() const;
 	~ConfigGenerator();
-	unsigned long long int getSizeExtends() const;
+	unsigned long long int getSizeextents() const;
 	unsigned long long int getSizeStart() const;
 	void setSizeStart(unsigned long long int sizeStart);
 	std::string configToString();
