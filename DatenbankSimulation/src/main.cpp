@@ -8,6 +8,7 @@
 #include <iostream>
 #include "ConfigGenerator.h"
 #include "ExecuteTest.h"
+#include <stdlib.h>
 
 using namespace std;
 
@@ -22,15 +23,26 @@ int main(int argc, char **argv)
 	// size of a single extent
 	unsigned long long int size_extents = 64;
 
-	// define read mode: LEFT_TO_RIGHT or RM_RANDOM
-	enum HDDTest::mode_readMode readMode = HDDTest::RM_RANDOM;
-
-	// distribution: ED_CONSTANT or ED_RANDOM
-	enum HDDTest::mode_extentDistribution extentDistribution = HDDTest::ED_CONSTANT;
+	enum HDDTest::mode_readMode readMode;
+	enum HDDTest::mode_extentDistribution extentDistribution;
 
 	std::string device = "/dev/sdb";
-	std::cout << "Enter device address: " << std::flush;
-	std::cin >> device;
+
+	if(argc <= 3) {
+		// define read mode: LEFT_TO_RIGHT or RM_RANDOM
+		readMode = HDDTest::RM_RANDOM;
+
+		// distribution: ED_CONSTANT or ED_RANDOM
+		extentDistribution = HDDTest::ED_CONSTANT;
+
+		std::cout << "Enter device address: " << std::flush;
+		std::cin >> device;
+	} else {
+		readMode = (atoi(argv[2]) == 0) ? HDDTest::LEFT_TO_RIGHT : HDDTest::RM_RANDOM;
+		extentDistribution = (atoi(argv[3]) == 0) ? HDDTest::ED_CONSTANT : HDDTest::ED_RANDOM;
+		device = std::string(argv[1]);
+	}
+
 
 	HDDTest::ConfigGenerator confGen = HDDTest::ConfigGenerator(
 										   size_start, size_spread,
