@@ -13,6 +13,7 @@
 #include "stdio.h"
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 namespace HDDTest
 {
@@ -20,10 +21,10 @@ namespace HDDTest
 enum mode_readMode {ORDERED, UNORDERED};
 enum mode_extentDistribution {EQUALLY , ED_RANDOM};
 
-struct startSize
+struct extent
 {
+	char relation_no; // number of relation
 	unsigned long long int start; // in KB
-	unsigned long long int size; // in KB
 };
 
 class ConfigGenerator
@@ -33,28 +34,41 @@ private:
 	unsigned long long int size_start;
 	// spreading of a single relation
 	unsigned long long int size_spread;
-	// size of a relation
-	unsigned long long int size_relation;
 	// extent size
-	unsigned long long int size_extents;
+	unsigned long long int size_extent;
+	// page size
+	unsigned long long int size_page;
 	enum mode_readMode readMode;
 	enum mode_extentDistribution extentDistribution;
+	//
+	char no_of_relations;
+	char* relation_distribution;
 
-	std::vector<struct startSize> readOrder; // marks start and size of what is read (in kb)
+	// marks start and size of what is read (in kb)
+	std::vector<struct extent> extentList;
+
+	// like extentList but for each relation separate. extentListOfRel[i] stores all extents of relation i
+	std::vector<struct extent>* extentListOfRel;
+
 	void init_rand();
 
 public:
 	ConfigGenerator(unsigned long long int size_start, unsigned long long int size_spread,
-					unsigned long long int size_relation, unsigned long long int size_extents,
-					enum mode_readMode readMode, enum mode_extentDistribution extentDistribution);
+					unsigned long long int size_extents, unsigned long long int size_page,
+					enum mode_readMode readMode, enum mode_extentDistribution extentDistribution,
+					char no_of_relations, char* relation_distribution);
 	~ConfigGenerator();
 
 	void generate();
-	std::vector<struct startSize> getReadOrder() const;
+	std::vector<struct extent> getAllExtentAllocations() const;
 	unsigned long long int getSizeExtents() const;
 	unsigned long long int getSizeStart() const;
 	void setSizeStart(unsigned long long int sizeStart);
+	std::vector<struct extent>* getExtentLocationsOfRel(char);
+	unsigned long long int getOneExtentOfRel(char);
+	unsigned long long int getOnePageOfRel(char);
 	std::string configToString();
+    char getNoOfRelations() const;
 };
 
 } /* namespace HDDTest */

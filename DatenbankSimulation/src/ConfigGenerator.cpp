@@ -38,7 +38,7 @@ void ConfigGenerator::generate()
 {
 	unsigned long long int noextents = size_relation / size_extents; // number of extents we have
 
-	if (readMode == LEFT_TO_RIGHT && extentDistribution == ED_CONSTANT)
+	if (readMode == ORDERED && extentDistribution == EQUALLY)
 	{
 		// reading order of extents from left to right, equal distances between extents
 		unsigned long long int sizeBetweenextents = (size_spread - size_relation) / noextents;
@@ -56,7 +56,7 @@ void ConfigGenerator::generate()
 		}
 	}
 
-	else if (readMode == LEFT_TO_RIGHT && extentDistribution == ED_RANDOM)
+	else if (readMode == ORDERED && extentDistribution == ED_RANDOM)
 	{
 		// reading order of extents from left to right, random distances between extents
 		unsigned long long int availableSlots = (size_spread - size_relation) / size_extents; // determins the number of maximum available extents in the range
@@ -97,7 +97,7 @@ void ConfigGenerator::generate()
 	}
 
 
-	else if (readMode == RM_RANDOM && extentDistribution == ED_CONSTANT)
+	else if (readMode == UNORDERED && extentDistribution == EQUALLY)
 	{
 		// reading order of extents randomly, equal distances between extents  --------------------------------------------------
 		unsigned long long int sizeBetweenextents = (size_spread - size_relation) / noextents;
@@ -129,7 +129,7 @@ void ConfigGenerator::generate()
 	}
 
 
-	else if (readMode == RM_RANDOM && extentDistribution == ED_RANDOM)
+	else if (readMode == UNORDERED && extentDistribution == ED_RANDOM)
 	{
 		// reading order of extents randomly, random distances between extents
 		unsigned long long int availableSlots = (size_spread - size_relation) / size_extents; // determins the number of maximum available extents in the range
