@@ -12,12 +12,14 @@ Skippy::Skippy(std::string theAddress): Benchmark(theAddress)
 {
 	this->device = theAddress;
 	this->testName = "skippy";
-	this->fd = open64(theAddress.data(), O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
-	//perror("open");
-	//printf("FD %d\n",fd);
-	//perror("abc");
+	this->fd = open64(theAddress.data(), O_DIRECT); //O_RDWR | O_SYNC);
+
+	blockSize = 0;
+	int rc = ioctl(fd, BLKSSZGET, &blockSize);
+	if(fd == -1)
+		perror("IOCTL BLKSSZGET");
+
     lseek64(fd, 0L, SEEK_SET);
-    //perror("seek to start");
 }
 
 void Skippy::configure(int iterations, int singleSector, int bufferSize)
@@ -25,9 +27,10 @@ void Skippy::configure(int iterations, int singleSector, int bufferSize)
 	this->iterations = iterations;
 	this->singleSector = singleSector;
 	//perror("single");
-	char* b = new char[bufferSize];
-	this->buffer = b;
-	//perror("buffer");
+	this->buffer = (char*)memalign(blockSize,calcBufferSize(bufferSize));
+	if (buffer == NULL) {
+		perror("ERROR MEMALIGN");
+	}
 }
 
 
@@ -53,8 +56,6 @@ void Skippy::execute()
         stopwatch.lap();
     }
     stopwatch.stop();
-    //TODO entfernen
-    //HDDTest::ResultSaver resultSaver(this->device, "skippy", iterations);
     HDDTest::ResultSaver resultSaver(this);
 	resultSaver.save(stopwatch);
 }

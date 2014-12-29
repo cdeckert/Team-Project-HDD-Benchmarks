@@ -17,6 +17,12 @@
 #include <string>
 #include <stdio.h>
 #include <iostream>
+#include <linux/hdreg.h>
+#include <sys/ioctl.h>
+#include <linux/fs.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <malloc.h>
 
 
 namespace Benchmark {
@@ -25,6 +31,8 @@ class Benchmark {
 protected:
 	std::string device;
 	std::string testName;
+	unsigned long blockSize;
+	size_t calcBufferSize(size_t);
 public:
     Benchmark(std::string);
     virtual void execute() = 0;

@@ -16,6 +16,10 @@ Seeker::Seeker(std::string theAddress): Benchmark(theAddress) {
 	perror("open");
 	measureSize();
 
+	blockSize = 0;
+	int rc = ioctl(fd, BLKSSZGET, &blockSize);
+	if(fd == -1)
+		perror("IOCTL BLKSSZGET");
 }
 
 Seeker::~Seeker() {
@@ -28,7 +32,12 @@ void Benchmark::Seeker::configure(unsigned int sectorSize, unsigned int stepSize
 	this->sectorSize = sectorSize;
 	this->stepSize = stepSize;
 	this->returnMode = returnMode;
-	this->buffer = new char[sectorSize];
+
+
+	this->buffer = (char*)memalign(blockSize,calcBufferSize(sectorSize));
+	if (buffer == NULL) {
+		perror("ERROR MEMALIGN");
+	}
 
 	this->iterations = diskSize / stepSize;
 }

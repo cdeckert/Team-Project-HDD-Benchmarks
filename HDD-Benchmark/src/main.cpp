@@ -20,33 +20,43 @@ int main(int argc, char** argv) {
     unsigned int sectorSize = 512;
     unsigned int bufferSize = 1024;
     unsigned int stepSize_seeker = 1024*1014;
-    std::string device = "/dev/sdd";
 
-    std::cout << "Enter device address:" << std::flush;
-    std::cin >> device;
+    vector<string> devices;
+    string newDevice = "/dev/sdd";
 
-    std::cout << "Test started for " << device << ": ";
+    for(int i = 1; true; i++) {
+    	std::cout << "enter address of device #"<<i<<" (type \"-\" for last one): " << std::flush;
+		std::cin >> newDevice;
+    	if(newDevice.compare("-") != 0) {
+    		devices.push_back(newDevice);
+    	} else {
+    		break;
+    	}
+	}
 
-    HDDTest::HDDModePageReader HDDModePageReader1 = HDDTest::HDDModePageReader(device);
-    HDDModePageReader1.read();
-    std::cout << HDDModePageReader1.getVendor() << " " << HDDModePageReader1.getDeviceName() << "\n";
+    for(vector<string>::iterator curDevice = devices.begin(); curDevice != devices.end(); ++curDevice) {
+		std::cout << "Test started for " << *curDevice << ": ";
 
-    Benchmark::Skippy skippy = Benchmark::Skippy(device);
-	skippy.configure(iterations, sectorSize, bufferSize);
-	skippy.execute();
+		HDDTest::HDDModePageReader HDDModePageReader1 = HDDTest::HDDModePageReader(*curDevice);
+		HDDModePageReader1.read();
+		std::cout << HDDModePageReader1.getVendor() << " " << HDDModePageReader1.getDeviceName() << "\n";
 
-    Benchmark::Zoned zoned = Benchmark::Zoned(device);
-    zoned.configure(bufferSize, 1024, 1024*1000);
-    zoned.execute();
+		Benchmark::Skippy skippy = Benchmark::Skippy(*curDevice);
+		skippy.configure(iterations, sectorSize, bufferSize);
+		skippy.execute();
 
-    Benchmark::Seeker seeker_mid = Benchmark::Seeker(device);
-    seeker_mid.configure(sectorSize, stepSize_seeker, Benchmark::MIDDLE);
-    seeker_mid.execute();
+		Benchmark::Zoned zoned = Benchmark::Zoned(*curDevice);
+		zoned.configure(bufferSize, 1024, 1024*1000);
+		zoned.execute();
 
-    Benchmark::Seeker seeker_begin = Benchmark::Seeker(device);
-    seeker_begin.configure(sectorSize, stepSize_seeker, Benchmark::BEGINNING);
-    seeker_begin.execute();
+		Benchmark::Seeker seeker_mid = Benchmark::Seeker(*curDevice);
+		seeker_mid.configure(sectorSize, stepSize_seeker, Benchmark::MIDDLE);
+		seeker_mid.execute();
 
+		Benchmark::Seeker seeker_begin = Benchmark::Seeker(*curDevice);
+		seeker_begin.configure(sectorSize, stepSize_seeker, Benchmark::BEGINNING);
+		seeker_begin.execute();
+    }
 
     return 0;
 }

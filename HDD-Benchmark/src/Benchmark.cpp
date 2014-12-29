@@ -30,4 +30,12 @@ std::string Benchmark::getTestName() {
 Benchmark::~Benchmark() {
 }
 
+size_t Benchmark::calcBufferSize(size_t minBufferSize) {
+	size_t tmpSize = minBufferSize*1024/blockSize;
+	if(minBufferSize*1024%blockSize != 0)
+		tmpSize += blockSize;
+	return tmpSize;
 }
+
+}
+

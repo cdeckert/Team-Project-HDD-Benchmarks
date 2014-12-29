@@ -9,16 +9,26 @@ namespace Benchmark
 	{
 		this->device = theAddress;
 		this->testName = "zoned";
-		this->fd = open64(theAddress.data(), O_RDWR | O_SYNC); //, O_DIRECT, O_LARGEFILE);
+		this->fd = open64(theAddress.data(), O_DIRECT); //O_RDWR | O_SYNC);
 		perror("open");
+
+		blockSize = 0;
+		int rc = ioctl(fd, BLKSSZGET, &blockSize);
+		if(fd == -1)
+			perror("IOCTL BLKSSZGET");
+
 		measureSize();
 	}
 
 	void Zoned::configure(int bufferSize, int largeSize, int reportSize)
 	{
 		this->largeSize = largeSize;
-		char* b = new char[bufferSize];
-		this->buffer = b;
+
+		this->buffer = (char*)memalign(blockSize,calcBufferSize(bufferSize));
+		if (buffer == NULL) {
+			perror("ERROR MEMALIGN");
+		}
+
 		this->reportSize = reportSize;
 		perror("config");
 	}
